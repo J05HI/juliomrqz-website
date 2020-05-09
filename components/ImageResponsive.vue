@@ -95,10 +95,6 @@ img {
   &[lazy='loading'] {
     @apply filter-blur;
   }
-
-  &[lazy='loaded'] {
-    @apply filter-none;
-  }
 }
 /* purgecss end ignore */
 </style>
