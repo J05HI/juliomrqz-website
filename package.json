@@ -1,0 +1,93 @@
+{
+  "name": "marquez-website",
+  "version": "1.0.0",
+  "description": "My Personal Website",
+  "author": "Julio Marquez",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "cross-env NODE_ENV=production nuxt generate --fail-on-error",
+    "svg": "vsvg -s ./assets/svg/src -t ./components/icons --ext ts --es6",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:fix": "yarn lint --fix",
+    "test": "jest",
+    "now-build": "yarn generate"
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "3.0.0-beta.20",
+    "@nuxtjs/sitemap": "2.2.1",
+    "@tailwindcss/ui": "0.3.0",
+    "date-fns": "2.13.0",
+    "first-input-delay": "0.1.3",
+    "github-markdown-css": "4.0.0",
+    "intersection-observer": "0.10.0",
+    "nuxt": "2.12.2",
+    "nuxt-i18n": "6.11.0",
+    "url-parse": "1.4.7",
+    "validator": "13.0.0",
+    "vue-lazy-hydration": "1.0.0-beta.12",
+    "vue-lazyload": "1.3.3",
+    "vue-script2": "2.1.0",
+    "vue-scrollto": "2.18.1",
+    "vue-svgicon": "3.2.6"
+  },
+  "devDependencies": {
+    "@aceforth/nuxt-optimized-images": "1.0.0",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@nuxt/typescript-build": "^0.6.0",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/google-analytics": "2.2.3",
+    "@nuxtjs/stylelint-module": "^3.1.0",
+    "@nuxtjs/tailwindcss": "^1.0.0",
+    "@types/validator": "13.0.0",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^26.0.1",
+    "cross-env": "7.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "frontmatter-markdown-loader": "3.4.2",
+    "highlight.js": "10.0.2",
+    "husky": "^4.0.0",
+    "imagemin-mozjpeg": "8.0.0",
+    "imagemin-pngquant": "8.0.0",
+    "imagemin-svgo": "7.1.0",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.0.0",
+    "markdown-it": "10.0.0",
+    "markdown-it-attrs": "3.0.2",
+    "markdown-it-github-headings": "2.0.0",
+    "markdown-it-inline-comments": "1.0.1",
+    "markdown-it-link-attributes": "3.0.0",
+    "markdown-it-mathjax": "2.0.0",
+    "markdown-it-mathjax-node": "0.4.1",
+    "markdown-it-prism": "2.0.5",
+    "postcss-combine-duplicated-selectors": "8.1.0",
+    "postcss-nested": "4.2.1",
+    "prettier": "^2.0.5",
+    "responsive-loader": "1.2.0",
+    "sharp": "0.25.2",
+    "stylelint": "^13.3.3",
+    "tailwindcss-filters": "3.0.0",
+    "ts-jest": "^25.0.0",
+    "vue-jest": "^4.0.0-0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "yarn lint",
+    "*.{css,vue}": "stylelint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

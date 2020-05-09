@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "scope": "juliomrqz",
+  "build": {
+    "env": {
+      "GA_TRACKING_ID": "UA-71683195-1"
+    }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-UA-Compatible": "ie=edge",
+        "X-XSS-Protection": "1; mode=block",
+        "Feature-Policy": "fullscreen 'self'; camera 'none'; geolocation 'none'; microphone 'none'",
+        "Referrer-Policy": "same-origin",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "continue": true
+    },
+
+    { "src": "/contact", "headers": { "location": "/" }, "status": 301 },
+    { "src": "/es/contact", "headers": { "location": "/" }, "status": 301 },
+
+    { "src": "^/_nuxt/(.*)", "dest": "/_nuxt/$1", "headers": { "cache-control": "public,max-age=31536000,immutable" } },
+    { "src": "^/favicon.ico", "dest": "/favicon.ico", "headers": { "cache-control": "public, max-age=86400" } },
+    { "src": "^/robots.txt", "dest": "/robots.txt", "headers": { "cache-control": "public, max-age=86400" } },
+    { "src": "^/sitemap.xml", "dest": "/sitemap.xml", "headers": { "cache-control": "public, max-age=3600, s-maxage=14400" } },
+    { "src": "^/sw.js", "dest": "/sw.js", "headers": { "cache-control": "no-cache" } },
+
+    { "src": "^/(.*)", "dest": "/$1", "methods": ["GET"] },
+
+    { "handle": "filesystem" },
+    { "src": "^/(.*)", "dest": "/404.html", "status": 404 }
+  ]
+}

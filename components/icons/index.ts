@@ -1,0 +1,11 @@
+/* tslint:disable */
+import './checkmark'
+import './cross'
+import './github'
+import './heart'
+import './instagram'
+import './lamp'
+import './linkedin'
+import './menu'
+import './shield'
+import './twitter'

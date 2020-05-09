@@ -1,0 +1,176 @@
+/* purgecss start ignore */
+.page {
+  &-enter-active,
+  &-leave-active {
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+    transition-duration: 150ms;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+/* remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+#marquez {
+  .markdown-body {
+    @apply text-lg;
+
+    h1,
+    h2 {
+      border-bottom: none;
+      padding-bottom: .5rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .table-responsive {
+      @apply -my-2 py-2 overflow-x-auto;
+
+      @screen sm {
+        @apply -mx-6 px-6;
+      }
+
+      @screen lg {
+        @apply -mx-8 px-8;
+      }
+    }
+
+    .table-container {
+      @apply align-middle inline-block min-w-full shadow overflow-hidden border-b border-gray-200;
+
+      @screen md {
+        @apply rounded-lg;
+      }
+    }
+
+    .table {
+      @apply min-w-full table m-0;
+
+      th {
+        @apply px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider;
+      }
+
+      td {
+        @apply px-6 py-4 whitespace-no-wrap leading-5 text-gray-800;
+      }
+
+      tr {
+        @apply bg-transparent;
+
+        &:not(:last-child) {
+          td {
+            @apply border-b border-gray-200;
+          }
+        }
+      }
+    }
+
+    .highlight pre,
+    pre {
+      @apply rounded-lg;
+    }
+
+    ol, ul {
+      list-style: none;
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+
+    ol {
+      list-style-type: none;
+      counter-reset: item;
+
+      > li {
+        @apply relative pl-10;
+
+        &:before {
+          @apply bg-gray-900 text-gray-100 w-6 h-6 rounded-full absolute top-0 left-0 flex text-sm font-semibold items-center justify-center;
+
+          margin-top: 1.5px;
+          content: counter(item);
+          counter-increment: item;
+        }
+      }
+    }
+
+    ul {
+      > li {
+        position: relative;
+        padding-left: 1.5rem;
+
+        &:before {
+          @apply bg-gray-900;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin-top: 10px;
+          height: 0.5rem;
+          width: 0.5rem;
+          border-radius: 9999px;
+          content: '';
+        }
+      }
+    }
+
+    /* taken from https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+    a {
+      @apply underline text-blue-600;
+
+      /* These are technically the same, but use both */
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -ms-word-break: break-all;
+
+      /* This is the dangerous one in WebKit, as it breaks things wherever */
+      word-break: break-all;
+
+      /* Instead use this non-standard one: */
+      word-break: break-word;
+
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+    }
+
+    .super {
+      @apply text-gray-800 text-sm;
+      vertical-align: super;
+    }
+
+    blockquote {
+      margin-top: 1.5rem;
+    }
+  }
+
+  article .markdown-body {
+    &,
+    p,
+    ul {
+      @apply text-gray-900;
+    }
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    @apply font-mono;
+  }
+}
+/* purgecss end ignore */
