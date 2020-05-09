@@ -79,9 +79,11 @@
                 :width="48"
                 :height="48"
                 :rounded="true"
-                source="https://github.com/juliomrqz.png"
+                :source="
+                  require('~/assets/images/profile.png?resize&sizes=144')
+                "
                 alt="Julio Márquez"
-                classes="w-12 h-12"
+                classes="w-12 h-12 border border-gray-300"
               />
               <div class="flex flex-col leading-tight ml-3">
                 <span class="font-medium text-gray-900">Julio Márquez</span>
