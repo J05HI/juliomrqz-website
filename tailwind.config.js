@@ -9,6 +9,7 @@ const colors = require('@tailwindcss/ui/colors')
 
 module.exports = {
   theme: {
+    darkSelector: '.dark-mode',
     filter: {
       none: 'none',
       blur: 'blur(15px)',
@@ -20,6 +21,7 @@ module.exports = {
       gray: colors['cool-gray'],
       blue: {
         600: colors.blue['600'],
+        400: colors.blue['400'],
       },
     },
     extend: {
@@ -30,7 +32,40 @@ module.exports = {
   },
   variants: {
     filter: ['responsive'],
+    backgroundColor: [
+      'responsive',
+      'hover',
+      'focus',
+      'active',
+      'dark',
+      'dark-hover',
+      'dark-focus',
+      'dark-active',
+    ],
+    borderColor: [
+      'responsive',
+      'hover',
+      'focus',
+      'dark',
+      'dark-hover',
+      'dark-focus',
+      'dark-active',
+    ],
+    textColor: [
+      'responsive',
+      'hover',
+      'focus',
+      'active',
+      'dark',
+      'dark-hover',
+      'dark-focus',
+      'dark-active',
+    ],
   },
-  plugins: [require('@tailwindcss/ui'), require('tailwindcss-filters')],
+  plugins: [
+    require('@tailwindcss/ui'),
+    require('tailwindcss-filters'),
+    require('tailwindcss-dark-mode')(),
+  ],
   purge: false,
 }

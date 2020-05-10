@@ -23,7 +23,7 @@
               <div class="-mr-2 flex items-center md:hidden">
                 <button
                   type="button"
-                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark-hover:bg-gray-800 dark-focus:bg-gray-800 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   @click="isMenuOpen = true"
                 >
                   <SvgIcon name="menu" width="24" height="24" class="h-6 w-6" />
@@ -37,7 +37,7 @@
               :key="index"
               :to="localePath(item)"
               :class="{ 'ml-10': index > 0 }"
-              class="font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
+              class="font-medium text-gray-500 hover:text-gray-900 dark-hover:text-gray-100 dark-focus:text-gray-100 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
             >
               {{ $t(`links.${item}`) }}
             </NuxtLink>
@@ -45,7 +45,7 @@
             <a
               :href="`mailto:${email}`"
               target="_blank"
-              class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
+              class="ml-10 font-medium text-gray-500 hover:text-gray-900 dark-hover:text-gray-100 dark-focus:text-gray-100 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
             >
               Email
             </a>
@@ -54,22 +54,16 @@
               :href="`${github.url}/website`"
               target="_blank"
               rel="noopener noreferrer"
-              class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
+              class="ml-10 font-medium text-gray-500 hover:text-gray-900 dark-hover:text-gray-100 dark-focus:text-gray-100 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
             >
               {{ $t('links.source') }}
             </a>
           </div>
-          <!-- <div
-            class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
+          <div
+            class="ml-3 md:absolute md:ml-0 md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
           >
-            <span class="inline-flex rounded-md shadow">
-              <a
-                href="#"
-                class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-gray-600 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-gray-700 transition duration-150 ease-in-out"
-                >Toggle</a
-              >
-            </span>
-          </div> -->
+            <DarkModeToggle />
+          </div>
         </nav>
       </div>
 
@@ -86,12 +80,14 @@
           class="absolute top-0 inset-x-0 p-2 origin-top-right z-10 md:hidden"
         >
           <div class="rounded-lg shadow-md">
-            <div class="rounded-lg bg-white shadow-xs overflow-hidden">
+            <div
+              class="rounded-lg bg-white shadow-xs overflow-hidden dark:bg-gray-800"
+            >
               <div class="px-5 pt-4 flex items-center justify-between">
                 <div>
                   <NuxtLink :to="localePath('index')" class="navbar-brand">
                     <img
-                      class="h-8 w-auto"
+                      class="h-8 w-auto rounded"
                       :alt="$t('title')"
                       :title="$t('title')"
                       :src="require('~/assets/images/logo.svg?inline').default"
@@ -103,7 +99,7 @@
                 <div class="-mr-2">
                   <button
                     type="button"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark-hover:bg-gray-900 dark-focus:bg-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                     @click="isMenuOpen = false"
                   >
                     <SvgIcon
@@ -121,7 +117,7 @@
                   :key="index"
                   :to="localePath(item)"
                   :class="{ 'mt-1': index > 0 }"
-                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-100 dark-hover:text-gray-100 dark-hover:bg-gray-900 dark-focus:text-gray-900 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                 >
                   {{ $t(`links.${item}`) }}
                 </NuxtLink>
@@ -130,7 +126,7 @@
                   :href="`${github.url}/website`"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                  class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-100 dark-hover:text-gray-100 dark-hover:bg-gray-900 dark-focus:text-gray-900 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                 >
                   {{ $t('links.source') }}
                 </a>
@@ -139,7 +135,7 @@
                 <a
                   :href="`mailto:${email}`"
                   target="_blank"
-                  class="block w-full px-5 py-3 text-center font-medium text-gray-600 bg-gray-50 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-100 focus:text-gray-700 transition duration-150 ease-in-out"
+                  class="block w-full px-5 py-3 text-center font-medium text-gray-600 bg-gray-50 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-700 dark:text-gray-100 dark-hover:text-gray-100 dark-hover:bg-gray-900 dark-focus:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-700 transition duration-150 ease-in-out"
                 >
                   Email
                 </a>
@@ -155,10 +151,15 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import '~/components/icons'
+import '~/components/icons/menu'
+import DarkModeToggle from '~/components/DarkModeToggle.vue'
 import social from '~/helpers/social'
 
 export default Vue.extend({
+  components: {
+    DarkModeToggle,
+  },
+
   data: () => ({
     isMenuOpen: false,
     github: social.find((s) => s.name === 'Github'),

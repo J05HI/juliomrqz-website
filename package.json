@@ -38,6 +38,7 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "@nuxt/typescript-build": "0.6.6",
+    "@nuxtjs/color-mode": "1.0.0",
     "@nuxtjs/eslint-config-typescript": "1.0.2",
     "@nuxtjs/eslint-module": "2.0.0",
     "@nuxtjs/google-analytics": "2.2.3",
@@ -74,6 +75,7 @@
     "responsive-loader": "1.2.0",
     "sharp": "0.25.2",
     "stylelint": "13.3.3",
+    "tailwindcss-dark-mode": "1.1.4",
     "tailwindcss-filters": "3.0.0",
     "ts-jest": "25.5.1",
     "vue-jest": "4.0.0-beta.2"

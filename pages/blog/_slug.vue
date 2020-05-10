@@ -68,7 +68,7 @@
         <div class="pb-4">
           <h1
             itemprop="name headline"
-            class="font-open-sans text-2xl leading-7 font-bold text-gray-900 mb-8 md:text-3xl"
+            class="font-open-sans text-2xl leading-7 font-bold dark:text-gray-100 mb-8 md:text-3xl"
           >
             {{ attributes.title }}
           </h1>
@@ -86,10 +86,12 @@
                 classes="w-12 h-12 border border-gray-300"
               />
               <div class="flex flex-col leading-tight ml-3">
-                <span class="font-medium text-gray-900">Julio Márquez</span>
+                <span class="font-medium dark:text-gray-100"
+                  >Julio Márquez</span
+                >
                 <time
                   :datetime="attributes.published"
-                  class="text-sm text-gray-600"
+                  class="text-sm text-gray-600 dark:text-gray-300"
                 >
                   {{ formatDate(attributes.published) }}
                 </time>
@@ -127,7 +129,7 @@
             :href="`${attributes.canonical}?ref=marquez-blog`"
             target="_blank"
             rel="noopener noreferrer"
-            class="underline text-blue-600"
+            class="underline text-blue-600 dark:text-blue-400"
             >{{ getDomain(attributes.canonical) }}</a
           >
 

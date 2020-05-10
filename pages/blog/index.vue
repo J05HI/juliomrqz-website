@@ -4,12 +4,12 @@
       <div class="relative max-w-7xl mx-auto">
         <div class="text-center">
           <h2
-            class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10"
+            class="text-3xl leading-9 tracking-tight font-extrabold sm:text-4xl sm:leading-10 dark:text-gray-100"
           >
             {{ $t('blog.title2') }}
           </h2>
           <p
-            class="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4"
+            class="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 dark:text-gray-300 sm:mt-4"
           >
             {{ $t('blog.description') }}
           </p>

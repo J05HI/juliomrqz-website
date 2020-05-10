@@ -13,16 +13,19 @@
         />
       </a>
     </div>
-    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+    <div
+      class="flex-1 bg-white p-6 flex flex-col justify-between dark:bg-gray-800"
+    >
       <div class="flex-1">
         <div class="inline-block">
           <span
             :class="{
-              'bg-gray-200 text-gray-900':
+              'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-50':
                 attributes.category === 'open-source',
               'bg-gray-900 text-gray-100':
                 attributes.category === 'closed-source',
-              'border border-gray-900': attributes.category === 'research',
+              'border border-gray-900 dark:border-gray-100':
+                attributes.category === 'research',
             }"
             class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5"
           >
@@ -35,13 +38,15 @@
           rel="noopener noreferrer"
           class="block"
         >
-          <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
+          <h3
+            class="mt-2 text-xl leading-7 font-semibold text-gray-900 dark:text-gray-100"
+          >
             {{ attributes.title[$i18n.locale] }}
           </h3>
 
           <!-- eslint-disable vue/no-v-html -->
           <p
-            class="mt-3 text-base leading-6 text-gray-500"
+            class="mt-3 text-base leading-6 text-gray-500 dark:text-gray-300"
             v-html="attributes.description[$i18n.locale]"
           />
         </a>

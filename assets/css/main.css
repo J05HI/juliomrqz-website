@@ -27,6 +27,12 @@
   .markdown-body {
     @apply text-lg;
 
+    &,
+    p,
+    ul {
+      @apply text-gray-900;
+    }
+
     h1,
     h2 {
       border-bottom: none;
@@ -160,17 +166,62 @@
     }
   }
 
-  article .markdown-body {
-    &,
-    p,
-    ul {
-      @apply text-gray-900;
-    }
-  }
-
   code[class*="language-"],
   pre[class*="language-"] {
     @apply font-mono;
+  }
+}
+
+.dark-mode {
+  #marquez {
+    .markdown-body {
+      &,
+      p,
+      ul {
+        @apply text-gray-100;
+      }
+
+      .table-container {
+        @apply border-gray-800;
+      }
+
+      .table {
+        th {
+          @apply border-gray-600 bg-gray-800 text-gray-300;
+        }
+
+        tr {
+          @apply border-gray-800;
+
+          &:not(:last-child) td,
+          & td {
+            @apply border-b border-gray-800 text-gray-100;
+          }
+        }
+      }
+
+      ol {
+        > li {
+          @apply relative pl-10;
+
+          &:before {
+            @apply bg-gray-100 text-gray-900;
+          }
+        }
+      }
+
+      ul {
+        > li {
+          &:before {
+            @apply bg-gray-100;
+          }
+        }
+      }
+
+      a {
+        @apply text-blue-400;
+      }
+    }
   }
 }
 /* purgecss end ignore */

@@ -54,7 +54,8 @@ const config = {
       { rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
     ],
     bodyAttrs: {
-      class: 'antialiased font-sans',
+      class:
+        'antialiased font-sans text-gray-900 transition-colors duration-300 ease-linear dark:bg-gray-900 dark:text-gray-300',
       id: 'marquez',
     },
   },
@@ -126,6 +127,7 @@ const config = {
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
+    '@nuxtjs/color-mode',
   ],
 
   /*
@@ -166,7 +168,7 @@ const config = {
    ** Router
    */
   router: {
-    linkActiveClass: 'text-gray-900',
+    linkActiveClass: 'text-gray-900 dark:text-gray-100',
   },
 
   /*
@@ -303,6 +305,10 @@ const config = {
       /language/,
       /line-numbers/,
     ],
+  },
+
+  colorMode: {
+    preference: 'light', // disable system
   },
 }
 
