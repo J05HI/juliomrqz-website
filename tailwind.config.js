@@ -11,7 +11,6 @@ module.exports = {
   theme: {
     filter: {
       none: 'none',
-      grayscale: 'grayscale(1)',
       blur: 'blur(15px)',
     },
     colors: {
@@ -19,7 +18,9 @@ module.exports = {
       black: '#000',
       white: '#fff',
       gray: colors['cool-gray'],
-      blue: colors.blue,
+      blue: {
+        600: colors.blue['600'],
+      },
     },
     extend: {
       fontFamily: {

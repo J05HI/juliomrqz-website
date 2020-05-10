@@ -80,7 +80,7 @@
                 :height="48"
                 :rounded="true"
                 :source="
-                  require('~/assets/images/profile.png?resize&sizes=144')
+                  require('~/assets/images/profile.jpg?resize&sizes=144')
                 "
                 alt="Julio Márquez"
                 classes="w-12 h-12 border border-gray-300"

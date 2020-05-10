@@ -72,7 +72,6 @@
                 :height="784 / 2"
                 :alt="$t('home.introduction.title')"
                 class="rounded-lg shadow-lg m-2"
-                classes="filter-grayscale"
               />
             </div>
           </div>

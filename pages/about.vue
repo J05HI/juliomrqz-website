@@ -42,7 +42,7 @@
             <div class="relative block w-full rounded-lg overflow-hidden">
               <ImageResponsive
                 :source="
-                  require('~/assets/images/profile.png?resize&sizes[]=600&sizes[]=900&sizes[]=1200')
+                  require('~/assets/images/profile.jpg?resize&sizes[]=600&sizes[]=900&sizes[]=1200')
                 "
                 :width="600"
                 :height="600"
@@ -185,7 +185,7 @@
               :height="400"
               :alt="$t('about.awards.title')"
               class="shadow-lg rounded-lg"
-              classes="relative mx-auto filter-grayscale"
+              classes="relative mx-auto"
             />
           </div>
         </div>
