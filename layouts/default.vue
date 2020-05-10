@@ -2,9 +2,9 @@
   <div>
     <Navbar />
 
-    <div class="main-container">
+    <main class="main-container">
       <Nuxt />
-    </div>
+    </main>
 
     <TheFooter />
   </div>

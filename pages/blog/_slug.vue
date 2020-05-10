@@ -117,7 +117,7 @@
 
         <ArticleContent itemprop="articleBody" />
 
-        <div
+        <aside
           v-if="attributes.canonical"
           class="mb-12 mt-8 py-4 border-t border-grey-600 text-base"
         >
@@ -132,7 +132,7 @@
           >
 
           {{ $t('blog.on') }} {{ formatDate(attributes.created) }}.
-        </div>
+        </aside>
       </div>
     </LazyHydrate>
 
