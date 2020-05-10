@@ -24,7 +24,7 @@
                 <button
                   type="button"
                   class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                  @click="open = true"
+                  @click="isMenuOpen = true"
                 >
                   <SvgIcon name="menu" width="24" height="24" class="h-6 w-6" />
                 </button>
@@ -82,7 +82,7 @@
         leave-to-class="opacity-0 scale-95"
       >
         <div
-          v-show="open"
+          v-show="isMenuOpen"
           class="absolute top-0 inset-x-0 p-2 origin-top-right z-10 md:hidden"
         >
           <div class="rounded-lg shadow-md">
@@ -104,7 +104,7 @@
                   <button
                     type="button"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                    @click="open = false"
+                    @click="isMenuOpen = false"
                   >
                     <SvgIcon
                       name="cross"
@@ -160,9 +160,15 @@ import social from '~/helpers/social'
 
 export default Vue.extend({
   data: () => ({
-    open: false,
+    isMenuOpen: false,
     github: social.find((s) => s.name === 'Github'),
     email: process.env.email,
   }),
+
+  watch: {
+    $route() {
+      this.isMenuOpen = false
+    },
+  },
 })
 </script>
