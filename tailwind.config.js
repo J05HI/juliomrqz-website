@@ -67,5 +67,50 @@ module.exports = {
     require('tailwindcss-filters'),
     require('tailwindcss-dark-mode')(),
   ],
-  purge: false,
+  purge: {
+    enabled: true,
+    content: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js',
+      'nuxt.config.js',
+    ],
+    options: {
+      extractors: [
+        {
+          extractor(content) {
+            return content.match(/[\w-/.:]+(?<!:)/g) || []
+          },
+          extensions: ['html', 'vue', 'js', 'ts'],
+        },
+      ],
+      whitelist: ['dark-mode', 'light-mode', 'nuxt-progress'],
+      // TODO: Improve the following definitions
+      whitelistPatterns: [
+        /^svg/,
+        /code/,
+        /pre/,
+        /table$/,
+        /markdown-body/,
+        /* prism */
+        /limit/,
+        /token/,
+        /language/,
+        /line-numbers/,
+      ],
+      whitelistPatternsChildren: [
+        /^svg/,
+        /code/,
+        /pre/,
+        /table$/,
+        /markdown-body/,
+        /* prism */
+        /limit/,
+        /token/,
+        /language/,
+        /line-numbers/,
+      ],
+    },
+  },
 }

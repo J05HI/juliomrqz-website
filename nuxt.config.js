@@ -270,43 +270,6 @@ const config = {
     },
   },
 
-  purgeCSS: {
-    extractors: [
-      {
-        extractor(content) {
-          return content.match(/[\w-/.:]+(?<!:)/g) || []
-        },
-        extensions: ['html', 'vue', 'js'],
-      },
-    ],
-    whitelist: ['antialiased', 'font-sans', 'nuxt-progress'],
-    // TODO: Improve the following definitions
-    whitelistPatterns: [
-      /^svg/,
-      /code/,
-      /pre/,
-      /table$/,
-      /markdown-body/,
-      /* prism */
-      /limit/,
-      /token/,
-      /language/,
-      /line-numbers/,
-    ],
-    whitelistPatternsChildren: [
-      /^svg/,
-      /code/,
-      /pre/,
-      /table$/,
-      /markdown-body/,
-      /* prism */
-      /limit/,
-      /token/,
-      /language/,
-      /line-numbers/,
-    ],
-  },
-
   colorMode: {
     preference: 'light', // disable system
   },
