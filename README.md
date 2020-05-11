@@ -2,8 +2,11 @@
 
 This is the website that powers `marquez.co`, built on top of [Vue.js][vue] and [Nuxt.js][nuxt], and deployed to the cloud via [Vercel](vercel).
 
+This website is for my blog posts and a place for Who I am. I also run some experiments on this website around web development that allows me to be up to date with the latest technologies.
 
 ## Features
+
+For a user perspective, this website is simple and fast enough. But, nowadays creating a "simple" website doesn't mean that the development process is also simple. In the following list, you will find the most important features that allow this website to be easy to maintain and scale as well as offering a good User Experience.
 
 - 💻 [Typescript][typescript]
 - 🚀 [Blazing-fast Static Site Generation][jamstack]
