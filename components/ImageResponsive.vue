@@ -49,7 +49,7 @@ export default Vue.extend({
     },
     placeholderColor: {
       type: String,
-      default: `${process.env.mainColor}`,
+      default: `${process.env.placeholderColor}`,
     },
     ampLayout: {
       type: String,

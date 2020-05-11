@@ -17,6 +17,7 @@ const title = 'Julio Marquez'
 const description = 'Developer, Entrepreneur & Coffee lover'
 const mainColor = colors['cool-gray'][900]
 const secondColor = '#fff'
+const placeholderColor = '#e2e8f0'
 const baseURL = isProd ? 'https://marquez.co' : 'http://localhost:3000'
 const builtAt = new Date().toISOString()
 const buildCode = `${pkg.version}-${(
@@ -32,6 +33,7 @@ const config: Configuration = {
   env: {
     mainColor,
     secondColor,
+    placeholderColor,
     baseHost: baseURL,
     email: 'julio@marquez.co',
   },
