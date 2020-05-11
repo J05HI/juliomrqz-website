@@ -1,4 +1,8 @@
 /* purgecss start ignore */
+body {
+  overflow-y: scroll;
+}
+
 .page {
   &-enter-active,
   &-leave-active {
