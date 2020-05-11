@@ -18,6 +18,7 @@ This is the website that powers `marquez.co`, built on top of [Vue.js][vue] and 
 - ✂️ [Unused CSS removal][unused-css-rules]
 - 🌒 [Dark Mode][dark-mode]
 - ⚡️ [Accelerated Mobile Pages (AMP)][amp]
+- 🏃 [Web Vitals][web-vitals]
 
 
 ## Build Setup
@@ -54,3 +55,4 @@ $ yarn generate
 [unused-css-rules]: https://web.dev/unused-css-rules/
 [dark-mode]: https://web.dev/prefers-color-scheme/
 [amp]: https://amp.dev
+[web-vitals]: https://web.dev/vitals/

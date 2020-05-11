@@ -9521,6 +9521,13 @@ nuxt-i18n@6.11.1:
     js-cookie "^2.2.1"
     vue-i18n "^8.17.3"
 
+nuxt-vitals@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/nuxt-vitals/-/nuxt-vitals-1.0.7.tgz#07d2fe8328e61e1b33a6bebf32698bd51dc2da16"
+  integrity sha512-XCJGW9xY4GukN6jkNOfEMVg6m2Vw2UCvpwHTc24OUip+TJ27FiS64roUP47URqUxjFFafAq1saURDWsASOwx7w==
+  dependencies:
+    web-vitals "^0.2.1"
+
 nuxt@2.12.2:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.12.2.tgz#959baa919bfef4adcd9e88f84bc948a49a03edd8"
@@ -13979,6 +13986,11 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+web-vitals@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-0.2.1.tgz#60782fa690243fe35613759a0c26431f57ba7b2d"
+  integrity sha512-2pdRlp6gJpOCg0oMMqwFF0axjk5D9WInc09RSYtqFgPXQ15+YKNQ7YnBBEqAL5jvmfH9WvoXDMb8DHwux7pIew==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

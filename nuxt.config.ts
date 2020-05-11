@@ -137,6 +137,13 @@ const config: Configuration = {
     ],
     ['vue-scrollto/nuxt', { offset: -40 }],
     '@nuxtjs/amp',
+    [
+      'nuxt-vitals',
+      {
+        trackingID: gaTrackingID,
+        debug: !isProd,
+      },
+    ],
   ],
 
   /*
