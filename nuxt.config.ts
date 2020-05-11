@@ -25,6 +25,7 @@ const buildCode = `${pkg.version}-${(
 
 const config: Configuration = {
   mode: 'universal',
+  target: 'static',
   /*
    ** Env Variables
    */
