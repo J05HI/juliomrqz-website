@@ -73,7 +73,7 @@ module.exports = {
       'components/**/*.vue',
       'layouts/**/*.vue',
       'pages/**/*.vue',
-      'plugins/**/*.js',
+      'plugins/**/*.ts',
       'nuxt.config.js',
     ],
     options: {
