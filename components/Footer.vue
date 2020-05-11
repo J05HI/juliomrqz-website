@@ -51,7 +51,7 @@
           :class="{ 'ml-6': index > 0 }"
           class="text-gray-500 hover:text-gray-900 dark-hover:text-gray-100"
         >
-          <span cl ass="sr-only">{{ social.name }}</span>
+          <span class="sr-only">{{ social.name }}</span>
 
           <SvgIcon
             :name="item.icon"

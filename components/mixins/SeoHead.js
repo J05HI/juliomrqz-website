@@ -9,8 +9,11 @@ export default {
     const head = { ...this.head }
     const extraScripts = head.extraScripts || []
 
-    const currentAbsoluteUrl = `${process.env.baseHost}${this.$router.currentRoute.path}`
     const baseImage = require(`~/assets/images/logotype.jpg`)
+    const fullPath = this.$isAMP
+      ? this.$route.fullPath.replace(/^\/amp(\/.*)?/, '$1')
+      : this.$route.fullPath
+    const currentAbsoluteUrl = `${process.env.baseHost}${fullPath}`
 
     const ogImage = [
       {
@@ -80,7 +83,7 @@ export default {
       ...i18nSeo.meta,
     ]
 
-    if (head.modified && head.modified) {
+    if (head.modified && head.published) {
       meta.push(
         {
           hid: 'og:type',
@@ -111,12 +114,6 @@ export default {
           content: '@juliomrqz',
         }
       )
-    } else {
-      meta.push({
-        hid: 'og:type',
-        property: 'og:type',
-        content: 'website',
-      })
     }
 
     if (head.noIndex) {
@@ -128,18 +125,15 @@ export default {
     }
 
     link.push({
+      hid: 'canonical',
       rel: 'canonical',
       href: head.canonical ? head.canonical : currentAbsoluteUrl,
-      hid: 'canonical',
     })
 
     return {
       title: head.title,
       titleTemplate: head.titleTemplate || '%s | Julio Marquez',
-      htmlAttrs: {
-        ...i18nSeo.htmlAttrs,
-        prefix: 'og: http://ogp.me/ns#',
-      },
+      htmlAttrs: i18nSeo.htmlAttrs,
       meta,
       link,
       script: [

@@ -82,6 +82,7 @@
                 :source="
                   require('~/assets/images/profile.jpg?resize&sizes=144')
                 "
+                amp-layout="fixed"
                 alt="Julio Márquez"
                 classes="w-12 h-12 border border-gray-300"
               />
@@ -145,7 +146,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-// @ts-ignore
 import Url from 'url-parse'
 
 import ArticleContent from '~/components/blog/ArticleContent.vue'
@@ -257,11 +257,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style scoped>
-.markdown-body {
-  >>> .anchor {
-    display: none;
-  }
-}
-</style>

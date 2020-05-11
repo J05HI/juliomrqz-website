@@ -17,6 +17,7 @@ This is the website that powers `marquez.co`, built on top of [Vue.js][vue] and 
 - 🎨 CSS3 with [Tailwind CSS][tailwind]
 - ✂️ [Unused CSS removal][unused-css-rules]
 - 🌒 [Dark Mode][dark-mode]
+- ⚡️ [Accelerated Mobile Pages (AMP)][amp]
 
 
 ## Build Setup
@@ -41,8 +42,8 @@ $ yarn generate
 [nuxt]: https://nuxtjs.org
 [vercel]: https://vercel.com
 [tailwind]: https://tailwindcss.com
-[typescript]: https://www.typescriptlang.org/
-[jamstack]: https://jamstack.org/
+[typescript]: https://www.typescriptlang.org
+[jamstack]: https://jamstack.org
 [pwa]: https://web.dev/progressive-web-apps/
 [markdown]: https://guides.github.com/features/mastering-markdown/
 [i18n]: https://en.wikipedia.org/wiki/Internationalization_and_localization
@@ -52,3 +53,4 @@ $ yarn generate
 [sitemap]: https://support.google.com/webmasters/answer/156184?hl=en
 [unused-css-rules]: https://web.dev/unused-css-rules/
 [dark-mode]: https://web.dev/prefers-color-scheme/
+[amp]: https://amp.dev

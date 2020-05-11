@@ -13,6 +13,10 @@ export default {
     more2: '¿Quíen soy?',
     source: 'Fuente',
   },
+  actions: {
+    openMenu: 'Abrir Menú',
+    closeMenu: 'Cerrar Menú',
+  },
   home: {
     introduction: {
       title: 'Soy muy apasionado y entusiasta en el desarrollo de herramientas',
@@ -36,6 +40,11 @@ export default {
     description:
       'Último proyectos en los que he estado involucrado y cumplen con estas condiciones: de complejidad media y alta además de innovadores.',
     viewAll: 'Ver todos los Proyectos',
+    categories: {
+      'open-source': 'Código Abierto',
+      'closed-source': 'Propietario',
+      research: 'Investigación',
+    },
   },
   about: {
     title: 'Acerca de mi',

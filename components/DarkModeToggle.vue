@@ -1,5 +1,7 @@
 <template>
-  <button
+  <Component
+    :is="$isAMP ? 'a' : 'button'"
+    :href="$isAMP ? toggleAmpLink : undefined"
     class="relative overflow-hidden inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-100 dark-hover:bg-gray-800 dark-focus:bg-gray-800 transition duration-150 ease-in-out"
     @click="setCurrentTheme"
   >
@@ -11,17 +13,17 @@
         width="24"
         height="24"
         class="h-6 w-6 absolute"
-        :class="$colorMode.preference === 'dark' ? 'show' : 'hide'"
+        :class="$colorMode.preference === 'light' ? 'show' : 'hide'"
       />
       <SvgIcon
         name="sun"
         width="24"
         height="24"
         class="h-6 w-6 absolute"
-        :class="$colorMode.preference === 'light' ? 'show' : 'hide'"
+        :class="$colorMode.preference === 'dark' ? 'show' : 'hide'"
       />
     </span>
-  </button>
+  </Component>
 </template>
 
 <script lang="ts">
@@ -31,7 +33,18 @@ import '~/components/icons/sun'
 import '~/components/icons/moon'
 
 export default Vue.extend({
-  data: () => ({}),
+  computed: {
+    toggleAmpLink() {
+      const canonicalPath: string = this.$route.fullPath.replace(
+        /^\/amp(\/.*)?/,
+        '$1'
+      )
+      const fullPath = canonicalPath === '' ? '/' : canonicalPath
+
+      return `${fullPath}?amp-dark-mode`
+    },
+  },
+
   methods: {
     setCurrentTheme() {
       this.$colorMode.preference =

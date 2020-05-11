@@ -1,6 +1,6 @@
 import isAlphanumeric from 'validator/lib/isAlphanumeric'
 
-import BlogIndex from '../../content/blog'
+import { blogIndex } from '../../content/blog'
 import BlogUtils from '../../helpers/blog'
 
 export const blogClient = {
@@ -18,7 +18,7 @@ export const blogClient = {
     let isValid = false
 
     if (key === 'articleSlug') {
-      isValid = BlogIndex.articles.includes(data) && _isAlphanumeric(data)
+      isValid = blogIndex.articles.includes(data) && _isAlphanumeric(data)
     }
 
     return isValid

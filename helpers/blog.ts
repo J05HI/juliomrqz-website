@@ -1,5 +1,5 @@
 import { VueConstructor } from 'vue'
-import BlogIndex from '~/content/blog'
+import { blogIndex } from '~/content/blog'
 
 interface MarkdownContent {
   attributes: { [key: string]: string | number | boolean }
@@ -30,8 +30,8 @@ const buildArticle = async (slug: string, lang = 'en') => {
 const buildArticles = async (lang = 'en') => {
   const articles = []
 
-  for (let i = 0; i < BlogIndex.articles.length; i++) {
-    const slug = BlogIndex.articles[i]
+  for (let i = 0; i < blogIndex.articles.length; i++) {
+    const slug = blogIndex.articles[i]
     const article = await buildArticle(slug, lang)
     articles.push(article)
   }

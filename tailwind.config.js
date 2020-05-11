@@ -74,7 +74,7 @@ module.exports = {
       'layouts/**/*.vue',
       'pages/**/*.vue',
       'plugins/**/*.ts',
-      'nuxt.config.js',
+      'nuxt.config.ts',
     ],
     options: {
       extractors: [
@@ -85,7 +85,7 @@ module.exports = {
           extensions: ['html', 'vue', 'js', 'ts'],
         },
       ],
-      whitelist: ['dark-mode', 'light-mode', 'nuxt-progress'],
+      whitelist: ['dark-mode', 'light-mode', 'nuxt-progress', '__amp'],
       // TODO: Improve the following definitions
       whitelistPatterns: [
         /^svg/,

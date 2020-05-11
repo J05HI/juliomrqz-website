@@ -10,11 +10,13 @@
           >
             <div class="flex items-center justify-between w-full md:w-auto">
               <NuxtLink :to="localePath('index')" class="navbar-brand">
-                <img
-                  class="h-8 w-auto rounded sm:h-10"
+                <Component
+                  :is="$isAMP ? 'amp-img' : 'img'"
+                  :layout="$isAMP ? 'fixed' : undefined"
                   :alt="$t('title')"
                   :title="$t('title')"
                   :src="require('~/assets/images/logo.svg?inline').default"
+                  class="h-8 w-auto rounded sm:h-10"
                   width="32"
                   height="32"
                 />
@@ -22,6 +24,10 @@
 
               <div class="-mr-2 flex items-center md:hidden">
                 <button
+                  :aria-label="$t('actions.openMenu')"
+                  :on="
+                    $isAMP ? `tap:AMP.setState({sidebar: 'block'})` : undefined
+                  "
                   type="button"
                   class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark-hover:bg-gray-800 dark-focus:bg-gray-800 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   @click="isMenuOpen = true"
@@ -67,6 +73,11 @@
         </nav>
       </div>
 
+      <amp-state v-if="$isAMP" id="sidebarState">
+        <!-- eslint-disable vue/no-v-html -->
+        <script data-safe type="application/json" v-html="navbarState" />
+      </amp-state>
+
       <transition
         enter-active-class="transition transform duration-150 ease-out"
         enter-class="opacity-0 scale-95"
@@ -77,7 +88,11 @@
       >
         <div
           v-show="isMenuOpen"
-          class="absolute top-0 inset-x-0 p-2 origin-top-right z-10 md:hidden"
+          id="sidebar"
+          v-bind="{
+            '[class]': $isAMP ? `sidebarState[sidebar].class` : undefined,
+          }"
+          :class="sidebarClass"
         >
           <div class="rounded-lg shadow-md">
             <div
@@ -86,11 +101,13 @@
               <div class="px-5 pt-4 flex items-center justify-between">
                 <div>
                   <NuxtLink :to="localePath('index')" class="navbar-brand">
-                    <img
-                      class="h-8 w-auto rounded"
+                    <Component
+                      :is="$isAMP ? 'amp-img' : 'img'"
+                      :layout="$isAMP ? 'fixed' : undefined"
                       :alt="$t('title')"
                       :title="$t('title')"
                       :src="require('~/assets/images/logo.svg?inline').default"
+                      class="h-8 w-auto rounded"
                       width="32"
                       height="32"
                     />
@@ -98,6 +115,12 @@
                 </div>
                 <div class="-mr-2">
                   <button
+                    :aria-label="$t('actions.closeMenu')"
+                    :on="
+                      $isAMP
+                        ? `tap:AMP.setState({sidebar: 'hidden'})`
+                        : undefined
+                    "
                     type="button"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark-hover:bg-gray-900 dark-focus:bg-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                     @click="isMenuOpen = false"
@@ -135,7 +158,7 @@
                 <a
                   :href="`mailto:${email}`"
                   target="_blank"
-                  class="block w-full px-5 py-3 text-center font-medium text-gray-600 bg-gray-50 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-700 dark:text-gray-100 dark-hover:text-gray-100 dark-hover:bg-gray-900 dark-focus:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-700 transition duration-150 ease-in-out"
+                  class="block w-full px-5 py-3 text-center font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-700 dark:text-gray-100 dark-hover:text-gray-100 dark-hover:bg-gray-900 dark-focus:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-700 transition duration-150 ease-in-out"
                 >
                   Email
                 </a>
@@ -155,21 +178,61 @@ import '~/components/icons/menu'
 import DarkModeToggle from '~/components/DarkModeToggle.vue'
 import social from '~/helpers/social'
 
+const sidebarBaseClass =
+  'absolute top-0 inset-x-0 p-2 origin-top-right z-10 md:hidden'
+
 export default Vue.extend({
   components: {
     DarkModeToggle,
   },
 
-  data: () => ({
-    isMenuOpen: false,
-    github: social.find((s) => s.name === 'Github'),
-    email: process.env.email,
-  }),
+  data() {
+    return {
+      isMenuOpen: this.$isAMP,
+      github: social.find((s) => s.name === 'Github'),
+      email: process.env.email,
+    }
+  },
+
+  computed: {
+    sidebarClass() {
+      let sidebarClass = sidebarBaseClass
+
+      if (this.$isAMP) {
+        sidebarClass += ' hidden'
+      }
+
+      return sidebarClass
+    },
+
+    navbarState() {
+      return JSON.stringify({
+        hidden: {
+          // @ts-ignore
+          class: `${sidebarBaseClass} hidden`,
+        },
+        block: {
+          // @ts-ignore
+          class: `${sidebarBaseClass} block`,
+        },
+      })
+    },
+  },
 
   watch: {
     $route() {
       this.isMenuOpen = false
     },
+  },
+
+  mounted() {
+    if ('amp-dark-mode' in this.$route.query) {
+      this.$colorMode.preference = 'dark'
+
+      this.$nextTick(() => {
+        this.$router.replace(this.$route.fullPath.replace('amp-dark-mode', ''))
+      })
+    }
   },
 })
 </script>

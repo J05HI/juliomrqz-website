@@ -6,19 +6,9 @@
     }"
     class="overflow-hidden leading-none inline-block"
   >
-    <img
-      :src="placeholder"
-      :data-src="source"
-      :data-loading="placeholder"
-      :width="`${width}`"
-      :height="`${height}`"
-      :class="{
-        'max-w-full h-auto': fluid,
-        'rounded-full': rounded,
-        [classes]: true,
-      }"
-      :alt="alt"
-      :data-srcset="srcset"
+    <Component
+      :is="$isAMP ? 'amp-img' : 'img'"
+      v-bind="imageProperties"
       class="transition-all ease-in duration-200"
     />
   </div>
@@ -61,6 +51,10 @@ export default Vue.extend({
       type: String,
       default: `${process.env.mainColor}`,
     },
+    ampLayout: {
+      type: String,
+      default: 'intrinsic',
+    },
   },
   computed: {
     srcset() {
@@ -84,6 +78,37 @@ export default Vue.extend({
         .replace('%{h}', `${this.height}`)
 
       return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(image)}`
+    },
+    imageProperties() {
+      let properties: { [key: string]: any } = {
+        width: `${this.width}`,
+        height: `${this.height}`,
+        class: {
+          'max-w-full h-auto': this.fluid,
+          'rounded-full': this.rounded,
+          // @ts-ignore
+          [this.classes]: true,
+        },
+        alt: this.alt,
+      }
+
+      if (this.$isAMP) {
+        properties.src = this.source
+        properties.layout = this.ampLayout
+      } else {
+        properties = {
+          ...properties,
+          // @ts-ignore
+          src: this.placeholder,
+          'data-src': this.source,
+          // @ts-ignore
+          'data-loading': this.placeholder,
+          // @ts-ignore
+          'data-srcset': this.srcset,
+        }
+      }
+
+      return properties
     },
   },
 })

@@ -13,6 +13,10 @@ export default {
     more2: 'Who am I?',
     source: 'Source',
   },
+  actions: {
+    openMenu: 'Open Menu',
+    closeMenu: 'Close Menu',
+  },
   home: {
     introduction: {
       title:

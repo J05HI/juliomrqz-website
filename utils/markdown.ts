@@ -1,6 +1,6 @@
-const MarkdownIt = require('markdown-it')
+import MarkdownIt from 'markdown-it'
 
-export const renderMarkdown = (source) => {
+export const renderMarkdown = (source: string): string => {
   const md = new MarkdownIt({
     linkify: true,
     breaks: true,

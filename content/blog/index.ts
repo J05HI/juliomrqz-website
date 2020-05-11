@@ -1,4 +1,4 @@
-export default {
+export const blogIndex = {
   articles: [
     '3-projects-challenging-recent-years',
     'nuxt-optimized-images',

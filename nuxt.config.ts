@@ -1,26 +1,28 @@
 import path from 'path'
+import { Configuration } from '@nuxt/types'
+import { ISitemapItemOptionsLoose, EnumChangefreq } from 'sitemap'
+// @ts-ignore
 import Mode from 'frontmatter-markdown-loader/mode'
+// @ts-ignore
 import colors from '@tailwindcss/ui/colors'
 
-import pkg from './package'
-import BlogIndex from './content/blog'
-import { renderMarkdown } from './webpack/markdown'
+import pkg from './package.json'
+import { blogIndex } from './content/blog'
+import { renderMarkdown } from './utils/markdown'
+import { ampify } from './utils/ampify'
 
 const isProd = process.env.NODE_ENV === 'production'
 const title = 'Julio Marquez'
 const description = 'Developer, Entrepreneur & Coffee lover'
 const mainColor = colors['cool-gray'][900]
 const secondColor = '#fff'
-const baseURL = isProd ? 'https://marquez.co' : 'http://localhost:3000/'
+const baseURL = isProd ? 'https://marquez.co' : 'http://localhost:3000'
 const builtAt = new Date().toISOString()
 const buildCode = `${pkg.version}-${(
   process.env.COMMIT_REF || String(new Date().getTime())
 ).substring(0, 7)}`
 
-/**
- * @type { import("@nuxt/types").Configuration }
- */
-const config = {
+const config: Configuration = {
   mode: 'universal',
   /*
    ** Env Variables
@@ -45,14 +47,32 @@ const config = {
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'msapplication-navbutton-color', content: mainColor },
 
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:site', content: '@juliomrqz' },
-      { property: 'og:updated_time', content: builtAt },
+      {
+        name: 'twitter:card',
+        property: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      { name: 'twitter:site', property: 'twitter:site', content: '@juliomrqz' },
+      {
+        hid: 'og:type',
+        name: 'og:type',
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:updated_time',
+        name: 'og:updated_time',
+        property: 'og:updated_time',
+        content: builtAt,
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
     ],
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#',
+    },
     bodyAttrs: {
       class:
         'antialiased font-sans text-gray-900 transition-colors duration-300 ease-linear dark:bg-gray-900 dark:text-gray-300',
@@ -115,6 +135,7 @@ const config = {
       },
     ],
     ['vue-scrollto/nuxt', { offset: -40 }],
+    '@nuxtjs/amp',
   ],
 
   /*
@@ -135,20 +156,21 @@ const config = {
    */
   build: {
     extend(config) {
-      config.module.rules.push({
-        test: /\.md$/,
-        loader: 'frontmatter-markdown-loader',
-        include: path.resolve(__dirname, 'content'),
-        options: {
-          mode: [Mode.META, Mode.VUE_COMPONENT],
-          markdown: (body) => {
-            return renderMarkdown(body)
+      config.module &&
+        config.module.rules.push({
+          test: /\.md$/,
+          loader: 'frontmatter-markdown-loader',
+          include: path.resolve(__dirname, 'content'),
+          options: {
+            mode: [Mode.META, Mode.VUE_COMPONENT],
+            markdown: (body: string) => {
+              return renderMarkdown(body)
+            },
+            vue: {
+              root: 'article-content',
+            },
           },
-          vue: {
-            root: 'article-content',
-          },
-        },
-      })
+        })
     },
     postcss: {
       plugins: {
@@ -176,9 +198,28 @@ const config = {
    */
   generate: {
     fallback: '404.html',
-    routes: []
-      .concat(BlogIndex.articles.map((s) => `/blog/${s}`))
-      .concat(BlogIndex.articles.map((s) => `/es/blog/${s}`)),
+    routes() {
+      const routes: string[] = ['/', '/about', '/projects', '/blog']
+
+      routes.forEach((route) => {
+        const postFix = route === '/' ? '' : route
+
+        routes.push(`/amp${postFix}`)
+
+        routes.push(`/es${postFix}`)
+        routes.push(`/amp/es${postFix}`)
+      })
+
+      blogIndex.articles.forEach((route) => {
+        routes.push(`/blog/${route}`)
+        routes.push(`/amp/blog/${route}`)
+
+        routes.push(`/es/blog/${route}`)
+        routes.push(`/amp/es/blog/${route}`)
+      })
+
+      return routes
+    },
   },
 
   /*
@@ -223,29 +264,34 @@ const config = {
    */
   sitemap: {
     hostname: baseURL,
+    exclude: ['/amp/**'],
+    defaults: {
+      changefreq: EnumChangefreq.WEEKLY,
+      priority: 0.7,
+      lastmod: new Date(),
+      lastmodrealtime: true,
+    },
     routes() {
       const websitePages = ['', 'about', 'projects', 'blog']
-      const routesEn = []
-      const routesEs = []
+      const routesEn: ISitemapItemOptionsLoose[] = []
+      const routesEs: ISitemapItemOptionsLoose[] = []
 
       // Generate Website routes
       websitePages.forEach((page) => {
         routesEn.push({
           url: `/${page}`,
-          changefreq: 'weekly',
-          priority: 0.8,
-          lastmodISO: new Date().toISOString(),
+          ampLink: `${baseURL}${page === '' ? '' : `/${page}`}`,
         })
       })
 
       // Generate from Blog Posts
       try {
-        BlogIndex.articles.map((slug) => {
+        blogIndex.articles.map((slug) => {
           routesEn.push({
             url: `/blog/${slug}`,
-            changefreq: 'weekly',
+            ampLink: `${baseURL}/blog/${slug}`,
+            changefreq: EnumChangefreq.DAILY,
             priority: 0.7,
-            lastmodISO: new Date().toISOString(),
           })
         })
       } catch (error) {
@@ -257,6 +303,7 @@ const config = {
         routesEs.push({
           ...route,
           url: `/es${route.url === '/' ? '' : route.url}`,
+          ampLink: `${baseURL}/amp/es${route.url === '/' ? '' : route.url}`,
         })
       })
 
@@ -272,6 +319,28 @@ const config = {
 
   colorMode: {
     preference: 'light', // disable system
+  },
+
+  hooks: {
+    // This hook is called before serving the html to the browser
+    render: {
+      route: async (url, page) => {
+        if (/^\/amp\//gi.test(url)) {
+          page.html = await ampify(!isProd, page.html)
+        }
+      },
+    },
+    generate: {
+      page: async (page) => {
+        if (/^\/amp\//gi.test(page.path)) {
+          page.html = await ampify(!isProd, page.html)
+        }
+      },
+    },
+  },
+
+  amp: {
+    origin: baseURL,
   },
 }
 
