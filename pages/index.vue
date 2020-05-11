@@ -181,7 +181,9 @@ export default {
   },
   mixins: [SeoHead],
   async asyncData({ app }) {
+    const title = `${app.i18n.t('subTitle')} ${app.i18n.t('title')}`
     let posts = []
+
     try {
       posts = await app.$blog.getArticles(app.i18n.locale)
     } catch (error) {
@@ -192,7 +194,7 @@ export default {
       posts: posts.slice(0, 3),
       head: {
         titleTemplate: '%s',
-        title: `${app.i18n.t('subTitle')} - ${app.i18n.t('slogan')}`,
+        title: `${title} - ${app.i18n.t('slogan')}`,
         description: app.i18n.t('description'),
       },
     }
