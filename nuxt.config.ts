@@ -12,6 +12,7 @@ import { renderMarkdown } from './utils/markdown'
 import { ampify } from './utils/ampify'
 
 const isProd = process.env.NODE_ENV === 'production'
+const gaTrackingID = process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-Y'
 const title = 'Julio Marquez'
 const description = 'Developer, Entrepreneur & Coffee lover'
 const mainColor = colors['cool-gray'][900]
@@ -149,6 +150,7 @@ const config: Configuration = {
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
     '@nuxtjs/color-mode',
+    '@nuxtjs/google-analytics',
   ],
 
   /*
@@ -255,8 +257,9 @@ const config: Configuration = {
   /*
    ** Google Analytics configuration
    */
-  'google-analytics': {
-    id: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-Y',
+  googleAnalytics: {
+    id: gaTrackingID,
+    debug: isProd ? {} : { enabled: true, sendHitTask: true },
   },
 
   /*
