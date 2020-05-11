@@ -16,6 +16,7 @@ export default {
   actions: {
     openMenu: 'Open Menu',
     closeMenu: 'Close Menu',
+    toggleDarkMode: 'Toggle Dark Mode',
   },
   home: {
     introduction: {

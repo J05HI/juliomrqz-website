@@ -2,6 +2,7 @@
   <Component
     :is="$isAMP ? 'a' : 'button'"
     :href="$isAMP ? toggleAmpLink : undefined"
+    :aria-label="$t('actions.toggleDarkMode')"
     class="relative overflow-hidden inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-100 dark-hover:bg-gray-800 dark-focus:bg-gray-800 transition duration-150 ease-in-out"
     @click="setCurrentTheme"
   >
