@@ -4,12 +4,12 @@
   >
     <div class="text-center">
       <div
-        class="text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base"
+        class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-300 sm:text-base lg:text-sm xl:text-base"
       >
         {{ subTitle }}
       </div>
       <h1
-        class="mt-1 text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:leading-none md:text-5xl"
+        class="mt-1 text-4xl tracking-tight leading-10 font-extrabold text-gray-900 dark:text-gray-100 sm:leading-none md:text-5xl"
       >
         {{ title }}
       </h1>
@@ -18,7 +18,7 @@
         <div class="rounded-md shadow">
           <a
             :href="localePath('index')"
-            class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray transition duration-150 ease-in-out md:text-lg md:px-10"
+            class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray dark:text-gray-900 dark:bg-gray-200 dark-hover:bg-gray-50 transition duration-150 ease-in-out md:text-lg md:px-10"
           >
             {{ $t('error.go-back-link') }}
           </a>
