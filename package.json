@@ -18,7 +18,7 @@
   "dependencies": {
     "@nuxtjs/amp": "0.2.4",
     "@nuxtjs/pwa": "3.0.0-beta.20",
-    "@nuxtjs/sitemap": "2.2.1",
+    "@nuxtjs/sitemap": "2.3.0",
     "@tailwindcss/ui": "0.3.0",
     "date-fns": "2.13.0",
     "first-input-delay": "0.1.3",

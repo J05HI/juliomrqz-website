@@ -1,6 +1,6 @@
 import path from 'path'
 import { Configuration } from '@nuxt/types'
-import { ISitemapItemOptionsLoose, EnumChangefreq } from 'sitemap'
+import { ISitemapItemOptionsLoose, EnumChangefreq, ILinkItem } from 'sitemap'
 // @ts-ignore
 import Mode from 'frontmatter-markdown-loader/mode'
 // @ts-ignore
@@ -112,10 +112,6 @@ const config: Configuration = {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/sitemap-module
-    '@nuxtjs/sitemap',
     // https://nuxt-community.github.io/nuxt-i18n/
     [
       'nuxt-i18n',
@@ -135,7 +131,10 @@ const config: Configuration = {
         },
       },
     ],
-    ['vue-scrollto/nuxt', { offset: -40 }],
+    // Doc: https://github.com/nuxt-community/sitemap-module
+    '@nuxtjs/sitemap',
+    // Doc: https://pwa.nuxtjs.org/
+    '@nuxtjs/pwa',
     '@nuxtjs/amp',
     [
       'nuxt-vitals',
@@ -144,6 +143,7 @@ const config: Configuration = {
         debug: !isProd,
       },
     ],
+    ['vue-scrollto/nuxt', { offset: -40 }],
   ],
 
   /*
@@ -275,22 +275,30 @@ const config: Configuration = {
   sitemap: {
     hostname: baseURL,
     exclude: ['/amp/**'],
+    i18n: 'en',
     defaults: {
       changefreq: EnumChangefreq.WEEKLY,
       priority: 0.7,
       lastmod: new Date(),
-      lastmodrealtime: true,
     },
     routes() {
       const websitePages = ['', 'about', 'projects', 'blog']
       const routesEn: ISitemapItemOptionsLoose[] = []
       const routesEs: ISitemapItemOptionsLoose[] = []
 
+      function getI18nLinks(route: string): ILinkItem[] {
+        return [
+          { lang: 'en', url: `${baseURL}${route}` },
+          { lang: 'es', url: `${baseURL}/es${route}` },
+        ]
+      }
+
       // Generate Website routes
       websitePages.forEach((page) => {
         routesEn.push({
           url: `/${page}`,
-          ampLink: `${baseURL}${page === '' ? '' : `/${page}`}`,
+          ampLink: `${baseURL}${page === '' ? '/amp' : `/amp/${page}`}`,
+          links: getI18nLinks(`/${page}`),
         })
       })
 
@@ -299,9 +307,10 @@ const config: Configuration = {
         blogIndex.articles.map((slug) => {
           routesEn.push({
             url: `/blog/${slug}`,
-            ampLink: `${baseURL}/blog/${slug}`,
             changefreq: EnumChangefreq.DAILY,
             priority: 0.7,
+            ampLink: `${baseURL}/amp/blog/${slug}`,
+            links: getI18nLinks(`blog/${slug}`),
           })
         })
       } catch (error) {
@@ -312,7 +321,7 @@ const config: Configuration = {
       routesEn.forEach((route) => {
         routesEs.push({
           ...route,
-          url: `/es${route.url === '/' ? '' : route.url}`,
+          url: `/es${route.url}`,
           ampLink: `${baseURL}/amp/es${route.url === '/' ? '' : route.url}`,
         })
       })
