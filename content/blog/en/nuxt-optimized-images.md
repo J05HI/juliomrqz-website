@@ -4,7 +4,7 @@ title: "A new way to optimize the images in your Nuxt projects"
 description: "We created a new module to automatically optimize images used in Nuxt.js projects (JPEG, PNG, SVG, WebP and GIF)."
 published: "2019-03-15T18:00:50Z"
 created: "2019-03-15T18:00:50Z"
-modified: "2020-05-09T20:25:25Z"
+modified: "2020-05-12T15:32:32Z"
 canonical: "https://aceforth.com/blog/nuxt-optimized-images"
 ---
 
@@ -26,15 +26,15 @@ You can now easily reduce the size of your images up to 60%, but this is not the
 Getting started is simple, just install the module as follows:
 
 ```bash 
-npm install @bazzite/nuxt-optimized-images # or yarn add @bazzite/nuxt-optimized-images
+npm install @aceforth/nuxt-optimized-images # or yarn add @aceforth/nuxt-optimized-images
 ```
 
-Add `@bazzite/nuxt-optimized-images` to the modules section of `nuxt.config.js`:
+Add `@aceforth/nuxt-optimized-images` to the modules section of `nuxt.config.js`:
 
 ```js
 {
   modules: [
-    '@bazzite/nuxt-optimized-images',
+    '@aceforth/nuxt-optimized-images',
   ],
 }
 ```
@@ -91,4 +91,4 @@ If you require Professional Assistance on your project(s), please contact us at 
 [nuxt-optimized-images-github]: https://github.com/aceforth/nuxt-optimized-images
 [spectrum-chat]: https://spectrum.chat/bazzite/login?r=https://spectrum.chat/bazzite/open-source
 [contact-page]: https://aceforth.com/contact
-[twitter]: https://bazzite.xyz/Twitter
+[twitter]: https://twitter.com/AceforthHQ
