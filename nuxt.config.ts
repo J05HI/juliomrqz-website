@@ -1,4 +1,5 @@
 import path from 'path'
+import * as fs from 'fs-extra'
 import { Configuration } from '@nuxt/types'
 import { ISitemapItemOptionsLoose, EnumChangefreq, ILinkItem } from 'sitemap'
 // @ts-ignore
@@ -7,7 +8,6 @@ import Mode from 'frontmatter-markdown-loader/mode'
 import colors from '@tailwindcss/ui/colors'
 
 import pkg from './package.json'
-import { blogIndex } from './content/blog'
 import { renderMarkdown } from './utils/markdown'
 import { ampify } from './utils/ampify'
 
@@ -22,6 +22,10 @@ const builtAt = new Date().toISOString()
 const buildCode = `${pkg.version}-${(
   process.env.COMMIT_REF || String(new Date().getTime())
 ).substring(0, 7)}`
+
+const blogIndex = fs
+  .readdirSync(path.resolve(__dirname, './content/blog/en'))
+  .map((f) => f.slice(0, -3))
 
 const config: Configuration = {
   mode: 'universal',
@@ -101,7 +105,6 @@ const config: Configuration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/blog',
     '~/plugins/vue-svgicon',
     '~/plugins/vue-lazyload',
     '~/plugins/vue-script2',
@@ -144,6 +147,7 @@ const config: Configuration = {
       },
     ],
     ['vue-scrollto/nuxt', { offset: -40 }],
+    '~/modules/blog',
   ],
 
   /*
@@ -219,7 +223,7 @@ const config: Configuration = {
         routes.push(`/amp/es${postFix}`)
       })
 
-      blogIndex.articles.forEach((route) => {
+      blogIndex.forEach((route) => {
         routes.push(`/blog/${route}`)
         routes.push(`/amp/blog/${route}`)
 
@@ -304,7 +308,7 @@ const config: Configuration = {
 
       // Generate from Blog Posts
       try {
-        blogIndex.articles.map((slug) => {
+        blogIndex.map((slug) => {
           routesEn.push({
             url: `/blog/${slug}`,
             changefreq: EnumChangefreq.DAILY,

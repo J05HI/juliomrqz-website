@@ -110,8 +110,8 @@
             >
               <ArticleCard
                 v-for="post in posts"
-                :key="post.attributes.slug"
-                :attributes="post.attributes"
+                :key="post.slug"
+                :attributes="post"
               />
             </div>
           </div>

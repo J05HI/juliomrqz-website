@@ -1,6 +1,6 @@
 import { Context } from '@nuxt/types'
 
-import { blogClient } from './plugins/blog/client'
+import { BlogClient } from './modules/blog/interfaces'
 
 interface ColorMode {
   preference: 'system' | 'light' | 'dark'
@@ -10,7 +10,7 @@ interface ColorMode {
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $blog: typeof blogClient
+    $blog: BlogClient
     $isAMP?: boolean
     $colorMode: ColorMode
   }
@@ -25,7 +25,7 @@ declare module 'vue/types/options' {
 
 declare module '@nuxt/types' {
   interface NuxtAppOptions {
-    $blog: typeof blogClient
+    $blog: BlogClient
     $isAMP?: boolean
     $colorMode: ColorMode
   }
