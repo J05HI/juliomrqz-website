@@ -48,6 +48,13 @@
       height: auto;
     }
 
+    p,
+    td {
+      img[svgimg="1"] {
+        @apply inline;
+      }
+    }
+
     .table-responsive {
       @apply -my-2 py-2 overflow-x-auto;
 

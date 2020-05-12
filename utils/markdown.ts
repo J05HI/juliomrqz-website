@@ -15,7 +15,6 @@ export const renderMarkdown = (source: string): string => {
     return '</table></div></div>'
   }
 
-  md.use(require('markdown-it-mathjax'))
   md.use(require('markdown-it-attrs'))
   md.use(require('markdown-it-inline-comments'))
   md.use(require('markdown-it-link-attributes'), [
@@ -51,6 +50,9 @@ export const renderMarkdown = (source: string): string => {
   md.use(require('markdown-it-github-headings'), {
     prefix: 'content-',
     linkIcon: '#',
+  })
+  md.use(require('markdown-it-mathjax-svg'), {
+    mathServiceUrl: 'https://render.githubusercontent.com/render/math?math=',
   })
 
   return md.render(source)

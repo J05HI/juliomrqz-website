@@ -138,8 +138,6 @@
         </aside>
       </div>
     </LazyHydrate>
-
-    <MathJax v-if="includeMathJax" />
   </article>
 </template>
 
@@ -151,19 +149,15 @@ import Url from 'url-parse'
 import ArticleContent from '~/components/blog/ArticleContent.vue'
 import SeoHead from '~/components/mixins/SeoHead'
 import FormatDate from '~/components/mixins/FormatDate'
-// @ts-ignore
-import MathJax from '~/components/MathJax'
 
 interface Data {
   html: string
   attributes: { [key: string]: any }
-  includeMathJax: boolean
   head: MetaInfo
 }
 
 export default Vue.extend({
   components: {
-    MathJax,
     ArticleContent,
   },
   mixins: [SeoHead, FormatDate],
@@ -181,7 +175,6 @@ export default Vue.extend({
         published,
         // wordCount,
         noindex,
-        includeMathJax,
       } = attributes
       const postAbsoluteUrl = `${process.env.baseHost}${
         locale === 'es' ? '/es' : ''
@@ -190,7 +183,6 @@ export default Vue.extend({
 
       return {
         attributes,
-        includeMathJax,
         head: {
           image,
           title,

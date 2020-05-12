@@ -107,7 +107,6 @@ const config: Configuration = {
   plugins: [
     '~/plugins/vue-svgicon',
     '~/plugins/vue-lazyload',
-    '~/plugins/vue-script2',
     '~/plugins/globalComponents',
   ],
 
@@ -262,6 +261,18 @@ const config: Configuration = {
     },
     workbox: {
       offlineAnalytics: true,
+      runtimeCaching: [
+        { urlPattern: 'https://cdn.jsdelivr.net/.*', handler: 'cacheFirst' },
+        {
+          urlPattern: 'https://render.githubusercontent.com/render/math.*',
+          handler: 'cacheFirst',
+          strategyOptions: {
+            cacheExpiration: {
+              maxAgeSeconds: 2592000,
+            },
+          },
+        },
+      ],
     },
   },
 

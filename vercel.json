@@ -25,7 +25,7 @@
         "X-XSS-Protection": "1; mode=block",
         "Feature-Policy": "fullscreen 'self'; camera 'none'; geolocation 'none'; microphone 'none'",
         "Referrer-Policy": "same-origin",
-        "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://ssl.google-analytics.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googleadservices.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; font-src 'self' about:; connect-src 'self' https://www.google-analytics.com"
+        "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://ssl.google-analytics.com https://cdn.jsdelivr.net https://www.googleadservices.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://render.githubusercontent.com; connect-src 'self' https://www.google-analytics.com"
       },
       "continue": true
     },
