@@ -73,11 +73,15 @@
                 {{ $t('about.introduction.title') }}
               </h2>
 
+              <!-- eslint-disable vue/no-v-html -->
               <p
                 class="mt-3 text-lg leading-7 text-gray-600 dark:text-gray-200"
-              >
-                {{ $t('about.introduction.description') }}
-              </p>
+                v-html="$t('about.introduction.description1')"
+              />
+              <p
+                class="mt-3 text-lg leading-7 text-gray-600 dark:text-gray-200"
+                v-html="$t('about.introduction.description2')"
+              />
             </div>
             <div
               class="mt-10 sm:grid sm:grid-cols-2 sm:col-gap-8 sm:row-gap-10 lg:col-span-2 lg:mt-0"
