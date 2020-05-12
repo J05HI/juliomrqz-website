@@ -36,7 +36,7 @@
     "vue-svgicon": "3.2.6"
   },
   "devDependencies": {
-    "@aceforth/nuxt-optimized-images": "1.0.0",
+    "@aceforth/nuxt-optimized-images": "1.0.1",
     "@ampproject/toolbox-optimizer": "2.3.1",
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",

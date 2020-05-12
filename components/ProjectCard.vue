@@ -5,7 +5,7 @@
         <ImageResponsive
           :source="
             attributes.category === 'open-source'
-              ? svgImage
+              ? require(`~/assets/images/projects/${attributes.id}.svg`)
               : require(`~/assets/images/projects/${attributes.id}.jpg?resize&sizes[]=600&sizes[]=900&sizes[]=1200`)
           "
           :width="1200 / 2"
@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
+import Vue from 'vue'
 
 export default Vue.extend({
   props: {
@@ -66,22 +66,6 @@ export default Vue.extend({
       type: Object,
       required: true,
       default: () => {},
-    } as PropOptions<{ [key: string]: string }>,
-  },
-
-  computed: {
-    svgImage(): string {
-      // nuxt-optimzed-images seems to be failing for SVG images
-
-      const image:
-        | { default: string }
-        | string = require(`~/assets/images/projects/${this.attributes.id}.svg`)
-
-      if (typeof image === 'string') {
-        return image
-      } else {
-        return image.default
-      }
     },
   },
 })
