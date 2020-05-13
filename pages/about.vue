@@ -208,7 +208,7 @@
                 :width="600"
                 :height="400"
                 :alt="$t('about.awards.title')"
-                class="shadow-lg rounded-lg"
+                class="sm:shadow-lg sm:rounded-lg"
                 classes="relative mx-auto"
               />
             </div>

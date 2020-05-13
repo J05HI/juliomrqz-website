@@ -55,6 +55,10 @@
       }
     }
 
+    p {
+      @apply overflow-x-auto;
+    }
+
     .table-responsive {
       @apply -my-2 py-2 overflow-x-auto;
 
