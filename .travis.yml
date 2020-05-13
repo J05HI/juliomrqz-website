@@ -11,4 +11,4 @@ install:
 
 script:
   - yarn lint
-  - yarn generate
+  - yarn static
