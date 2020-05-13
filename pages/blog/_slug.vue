@@ -161,7 +161,7 @@ export default Vue.extend({
     ArticleContent,
   },
   mixins: [SeoHead, FormatDate],
-  async asyncData({ app, params }) {
+  async asyncData({ app, params, $sentry }) {
     try {
       const { slug } = params
       const { locale } = app.i18n
@@ -229,9 +229,8 @@ export default Vue.extend({
           ],
         },
       }
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.debug(err)
+    } catch (error) {
+      $sentry.captureException(error)
       return false
     }
   },

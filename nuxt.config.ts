@@ -19,9 +19,13 @@ const mainColor = colors['cool-gray'][900]
 const secondColor = '#fff'
 const baseURL = isProd ? 'https://marquez.co' : 'http://localhost:3000'
 const builtAt = new Date().toISOString()
-const buildCode = `${pkg.version}-${(
-  process.env.COMMIT_REF || String(new Date().getTime())
-).substring(0, 7)}`
+const commitSha =
+  process.env.VERCEL_GITHUB_COMMIT_SHA || String(new Date().getTime())
+const buildCode = `${pkg.version}-${commitSha.substring(0, 7)}`
+const isPreview = process.env.VERCEL_GITHUB_COMMIT_REF !== 'master'
+const environment = isProd
+  ? `${isPreview ? 'preview' : 'production'}`
+  : 'development'
 
 const blogIndex = fs
   .readdirSync(path.resolve(__dirname, './content/blog/en'))
@@ -146,6 +150,7 @@ const config: Configuration = {
       },
     ],
     ['vue-scrollto/nuxt', { offset: -40 }],
+    '@nuxtjs/sentry',
     '~/modules/blog',
   ],
 
@@ -375,6 +380,31 @@ const config: Configuration = {
 
   amp: {
     origin: baseURL,
+  },
+
+  sentry: {
+    config: {
+      environment,
+      release: buildCode,
+      tags: {
+        version: buildCode,
+      },
+      whitelistUrls: [
+        new RegExp(baseURL.replace(new RegExp('^(https?://)'), '')),
+        new RegExp(
+          `${process.env.VERCEL_URL}`.replace(new RegExp('^(https?://)'), '')
+        ),
+      ],
+    },
+    disableServerRelease: true,
+    webpackConfig: {
+      debug: !isProd,
+      release: buildCode,
+      setCommits: {
+        repo: process.env.VERCEL_GITHUB_REPO,
+        commit: commitSha,
+      },
+    },
   },
 }
 

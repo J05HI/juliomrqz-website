@@ -28,6 +28,7 @@
       "@types/node",
       "@nuxt/types",
       "@nuxt/vue-app",
+      "@nuxtjs/sentry",
       "nuxt-i18n"
     ]
   },

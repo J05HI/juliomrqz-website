@@ -180,14 +180,14 @@ export default {
     ProjectCard,
   },
   mixins: [SeoHead],
-  async asyncData({ app }) {
+  async asyncData({ app, $sentry }) {
     const title = `${app.i18n.t('subTitle')} ${app.i18n.t('title')}`
     let posts = []
 
     try {
       posts = await app.$blog.getArticles(app.i18n.locale)
     } catch (error) {
-      // console.log(error)
+      $sentry.captureException(error)
     }
 
     return {
