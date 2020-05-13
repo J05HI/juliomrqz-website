@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
     "lint:fix": "yarn lint --fix",
     "test": "jest",
-    "now-build": "yarn generate",
+    "now-build": "yarn static",
     "static": "nuxt-ts build && nuxt-ts export"
   },
   "dependencies": {
