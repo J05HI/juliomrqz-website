@@ -16,13 +16,13 @@ export default {
   actions: {
     openMenu: 'Open Menu',
     closeMenu: 'Close Menu',
+    toggleDarkMode: 'Toggle Dark Mode',
   },
   home: {
     introduction: {
-      title:
-        "I'm very passionate and enthusiastic about developing great tools",
+      title: "I'm a full-stack developer, entrepreneur and Coffe Lover",
       description:
-        "I consider support and communication channels a key asset to deliver the best experience. I don't take things for granted, this is why I'm constantly innovating, learning and trying new ways to accomplish my goals with both quality and harmony.",
+        "I've been in love with web development for more than 15 years. I'm very passionate and enthusiastic about using technology to solve my life's problems and ambitions, and not to mention, I really like a good cup of coffee ☕️.",
     },
   },
   blog: {
@@ -39,7 +39,7 @@ export default {
   projects: {
     title: 'Latest Projects',
     description:
-      'Latest projects in which I have been involved and meet these conditions: medium and high complexity as well as innovative.',
+      'Some innovative and challenging projects that I have helped to develop over the past few years.',
     viewAll: 'View all Projects',
     categories: {
       'open-source': 'Open Source',
@@ -52,11 +52,11 @@ export default {
     title2: "Hello, I'm Julio Marquez",
     subTitle: 'Developer, Entrepreneur & Coffee lover',
     description:
-      "I'm a passionate Developer, Entrepreneur & Coffee lover who creates tools that best fit my clients' needs.",
+      "I'm a passionate Full-stack Developer who creates tools that best fit my life's problems and ambitions. I also love to contribute to Open Source.",
     introduction: {
       title: "I don't only measure myself by who I am, but by what I build",
-      description:
-        "I'm very passionate and enthusiastic about developing tools that best fit my clients' needs. To accomplish that goal, I consider my support and communication channels a key asset to deliver the best experience. I don't take things for granted, this is why I'm constantly innovating, learning and trying new ways to accomplish my goals with both quality and harmony.",
+      description1: `I'm very passionate and enthusiastic about using technology to solve my life's problems and ambitions. I create <a href="/projects" class="underline font-bold">tools</a> that best fit my clients' needs and I often contribute to <a href="https://github.com/juliomrqz" target="_blank" rel="noopener noreferrer" class="underline font-bold">Open Source</a>.`,
+      description2: `I don't take things for granted, this is why I'm constantly innovating, learning, and trying new ways to accomplish my goals with both quality and harmony.`,
       passion: {
         title: 'Passion',
         description:
@@ -81,16 +81,16 @@ export default {
     experience: {
       title: 'Experience',
       experience1: {
+        title: 'Full Stack Developer',
+        company: 'Freelance | September 2008 - Present',
+        description:
+          'Professional Full Stack developer with more that 11 years of experience.',
+      },
+      experience2: {
         title: 'Full Stack Developer & Project Manager',
         company: 'Bazzite, LLC | Aug 2015 – Present',
         description:
           'A company focused on developing web tools and providing services in technology.',
-      },
-      experience2: {
-        title: 'Full Stack Developer',
-        company: 'Freelance | September 2008 - Aug 2015',
-        description:
-          'Professional Full Stack developer with more that 10 years of experience.',
       },
       experience3: {
         title: 'Research Assistant',

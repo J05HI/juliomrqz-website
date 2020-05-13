@@ -16,6 +16,21 @@ export default [
     category: 'open-source',
   },
   {
+    id: 'nuxt-optimized-images',
+    title: {
+      en: 'Nuxt Optimized Images',
+      es: 'Nuxt Optimized Images',
+    },
+    description: {
+      en:
+        'Automatically optimizes images used in Nuxt.js projects (JPEG, PNG, SVG, WebP and GIF).',
+      es:
+        'Optimiza automáticamente las imágenes utilizadas en los proyectos en Nuxt.js (JPEG, PNG, SVG, WebP y GIF).',
+    },
+    url: 'https://github.com/aceforth/nuxt-optimized-images',
+    category: 'open-source',
+  },
+  {
     id: 'mapset',
     title: {
       en:
@@ -31,6 +46,21 @@ export default [
     },
     url: 'https://youtu.be/orNVuOp31Lc',
     category: 'closed-source',
+  },
+  {
+    id: 'vue-warehouse',
+    title: {
+      en: 'Vue.js Warehouse',
+      es: 'Vue.js Warehouse',
+    },
+    description: {
+      en:
+        'A Cross-browser storage for Vue.js and Nuxt.js, with plugins support and easy extensibility based on Store.js.',
+      es:
+        'Almacenamiento entre navegadores para Vue.js and Nuxt.js, con soporte de complementos y fácil extensibilidad basado en Store.js.',
+    },
+    url: 'https://github.com/aceforth/vue-warehouse',
+    category: 'open-source',
   },
   {
     id: 'scientific-article',

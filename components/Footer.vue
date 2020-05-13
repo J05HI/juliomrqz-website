@@ -46,16 +46,17 @@
           :key="item.name"
           :href="item.url"
           :title="item.name"
+          :aria-label="item.name"
+          :class="{ 'ml-6': index > 0 }"
           target="_blank"
           rel="noopener noreferrer"
-          :class="{ 'ml-6': index > 0 }"
           class="text-gray-500 hover:text-gray-900 dark-hover:text-gray-100"
         >
-          <span class="sr-only">{{ social.name }}</span>
+          <span class="sr-only">{{ item.name }}</span>
 
           <SvgIcon
             :name="item.icon"
-            :title="social.name"
+            :title="item.name"
             width="24"
             height="24"
             class="h-6 w-6"

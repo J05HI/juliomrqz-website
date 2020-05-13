@@ -13,11 +13,11 @@
   "files.insertFinalNewline": true,
 
   "vetur.grammar.customBlocks": {
-    "i18n": "json",
-    "script2": "javascript"
+    "i18n": "json"
   },
   "files.associations": {
     "*.js.tpl": "javascript",
-    "*.ts.tpl": "typescript"
+    "*.ts.tpl": "typescript",
+    "*.env.example": "dotenv",
   }
 }

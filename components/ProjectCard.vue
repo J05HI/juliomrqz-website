@@ -4,7 +4,9 @@
       <a :href="attributes.url" target="_blank" rel="noopener noreferrer">
         <ImageResponsive
           :source="
-            require(`~/assets/images/projects/${attributes.id}.jpg?resize&sizes[]=600&sizes[]=900&sizes[]=1200`)
+            attributes.category === 'open-source'
+              ? require(`~/assets/images/projects/${attributes.id}.svg`)
+              : require(`~/assets/images/projects/${attributes.id}.jpg?resize&sizes[]=600&sizes[]=900&sizes[]=1200`)
           "
           :width="1200 / 2"
           :height="630 / 2"
@@ -55,14 +57,16 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   props: {
     attributes: {
       type: Object,
-      require: true,
+      required: true,
       default: () => {},
     },
   },
-}
+})
 </script>

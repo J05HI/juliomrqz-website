@@ -22,6 +22,8 @@ For a user perspective, this website is simple and fast enough. But, nowadays cr
 - 🌒 [Dark Mode][dark-mode]
 - ⚡️ [Accelerated Mobile Pages (AMP)][amp]
 - 🏃 [Web Vitals][web-vitals]
+- 🛡 [Content Security Policy (CSP)][csp]
+- 🐛 Errors monitoring through [Sentry][sentry]
 
 
 ## Build Setup
@@ -59,3 +61,5 @@ $ yarn generate
 [dark-mode]: https://web.dev/prefers-color-scheme/
 [amp]: https://amp.dev
 [web-vitals]: https://web.dev/vitals/
+[csp]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+[sentry]: https://sentry.io/welcome/

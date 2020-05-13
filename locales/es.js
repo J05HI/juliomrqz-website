@@ -16,12 +16,13 @@ export default {
   actions: {
     openMenu: 'Abrir Menú',
     closeMenu: 'Cerrar Menú',
+    toggleDarkMode: 'Cambiar el Modo Oscuro',
   },
   home: {
     introduction: {
-      title: 'Soy muy apasionado y entusiasta en el desarrollo de herramientas',
+      title: 'Soy un desarrollador full-stack, emprendedor y amante del café.',
       description:
-        'Considero que los canales de apoyo y comunicación son un activo clave para ofrecer la mejor experiencia. No doy las cosas por sentado, por eso estoy constantemente innovando, aprendiendo y probando nuevas formas de lograr mis metas con calidad y armonía.',
+        'He estado enamorado del desarrollo web durante más de 15 años. Soy muy apasionado y entusiasta en el uso de la tecnología para resolver los problemas y ambiciones de mi vida, sin mencionar que me gusta mucho una buena taza de café ☕️.',
     },
   },
   blog: {
@@ -38,7 +39,7 @@ export default {
   projects: {
     title: 'Último Proyectos',
     description:
-      'Último proyectos en los que he estado involucrado y cumplen con estas condiciones: de complejidad media y alta además de innovadores.',
+      'Algunos proyectos innovadores y desafiantes que he ayudado a desarrollar en los últimos años.',
     viewAll: 'Ver todos los Proyectos',
     categories: {
       'open-source': 'Código Abierto',
@@ -51,11 +52,12 @@ export default {
     title2: 'Hola, soy Julio Márquez',
     subTitle: 'Desarrollador, Emprendedor y Amante del café',
     description:
-      'Soy un apasionado desarrollador, emprendedor y amante del café que crea herramientas que mejor se adapten a las necesidades de mis clientes.',
+      'Soy un apasionado Desarrollador Full-stack que crea herramientas que se ajustan a los problemas y ambiciones de mi vida. También me encanta contribuir al Código Abierto.',
     introduction: {
       title: 'No sólo me mido por lo que soy, sino por lo que construyo',
-      description:
-        'Soy muy apasionado y entusiasta en el desarrollo de herramientas que mejor se adapten a las necesidades de mis clientes. Para lograr ese objetivo, considero que mis canales de apoyo y comunicación son un activo clave para ofrecer la mejor experiencia. No doy las cosas por sentado, por eso estoy constantemente innovando, aprendiendo y probando nuevas formas de lograr mis metas con calidad y armonía.',
+      description1: `Soy muy apasionado y entusiasta en el uso de la tecnología para resolver los problemas y ambiciones de mi vida. Creo <a href="/es/projects" class="underline font-bold">herramientas</a> que mejor se adaptan a las necesidades de mis clientes y a menudo contribuyo al <a href="https://github.com/juliomrqz" target="_blank" rel="noopener noreferrer" class="underline font-bold">Código Abierto</a>.`,
+      description2:
+        'No doy las cosas por sentado, por eso estoy constantemente innovando, aprendiendo y probando nuevas formas de lograr mis objetivos con calidad y armonía.',
       passion: {
         title: 'Pasión',
         description:
@@ -80,16 +82,16 @@ export default {
     experience: {
       title: 'Experiencia',
       experience1: {
+        title: 'Full Stack Developer',
+        company: 'Freelance | September 2008 - Presente',
+        description:
+          'Desarrollador profesional Full Stack con más de 11 años de experiencia.',
+      },
+      experience2: {
         title: 'Desarrollador y Administrador de Proyectos',
         company: 'Bazzite, LLC | Ago 2015 - Presente',
         description:
           'Empresa dedicada al desarrollo de herramientas web y a la prestación de servicios tecnológicos.',
-      },
-      experience2: {
-        title: 'Full Stack Developer',
-        company: 'Freelance | September 2008 - Aug 2015',
-        description:
-          'Desarrollador profesional Full Stack con más de 10 años de experiencia.',
       },
       experience3: {
         title: 'Asistente de Investigación',

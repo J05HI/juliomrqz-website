@@ -4,7 +4,7 @@ title: "Introducing you Nuxt Netlify"
 description: "We created a new module for Nuxt.js that supports the dynamic creation of redirects and header rules for your site in Netlify."
 published: "2019-03-14T17:52:20Z"
 created: "2019-03-14T17:52:20Z"
-modified: "2020-05-09T20:25:25Z"
+modified: "2020-05-12T15:32:32Z"
 canonical: "https://aceforth.com/blog/nuxt-netlify"
 ---
 
@@ -15,15 +15,15 @@ We are pleased to introduce you [Nuxt Netlify][nuxt-netlify-github], a new modul
 Getting started is simple, just install the module as follows:
 
 ```bash 
-npm install @bazzite/nuxt-netlify # or yarn add @bazzite/nuxt-netlify
+npm install @aceforth/nuxt-netlify # or yarn add @aceforth/nuxt-netlify
 ```
 
-Add `@bazzite/nuxt-netlify` to the modules section of `nuxt.config.js`:
+Add `@aceforth/nuxt-netlify` to the modules section of `nuxt.config.js`:
 
 ```js
 {
   modules: [
-    '@bazzite/nuxt-netlify',
+    '@aceforth/nuxt-netlify',
   ],
 }
 ```
@@ -71,4 +71,4 @@ If you require Professional Assistance on your project(s), please contact us at 
 [netlify-headers-and-basic-auth]: https://www.netlify.com/docs/headers-and-basic-auth/
 [netlify-redirects]: https://www.netlify.com/docs/redirects/
 [contact-page]: https://aceforth.com/contact
-[twitter]: https://bazzite.xyz/Twitter
+[twitter]: https://twitter.com/AceforthHQ

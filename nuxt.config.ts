@@ -1,13 +1,13 @@
 import path from 'path'
+import * as fs from 'fs-extra'
 import { Configuration } from '@nuxt/types'
-import { ISitemapItemOptionsLoose, EnumChangefreq } from 'sitemap'
+import { ISitemapItemOptionsLoose, EnumChangefreq, ILinkItem } from 'sitemap'
 // @ts-ignore
 import Mode from 'frontmatter-markdown-loader/mode'
 // @ts-ignore
 import colors from '@tailwindcss/ui/colors'
 
 import pkg from './package.json'
-import { blogIndex } from './content/blog'
 import { renderMarkdown } from './utils/markdown'
 import { ampify } from './utils/ampify'
 
@@ -20,9 +20,17 @@ const secondColor = '#fff'
 const placeholderColor = '#e2e8f0'
 const baseURL = isProd ? 'https://marquez.co' : 'http://localhost:3000'
 const builtAt = new Date().toISOString()
-const buildCode = `${pkg.version}-${(
-  process.env.COMMIT_REF || String(new Date().getTime())
-).substring(0, 7)}`
+const commitSha =
+  process.env.VERCEL_GITHUB_COMMIT_SHA || String(new Date().getTime())
+const buildCode = `${pkg.version}-${commitSha.substring(0, 7)}`
+const isPreview = process.env.VERCEL_GITHUB_COMMIT_REF !== 'master'
+const environment = isProd
+  ? `${isPreview ? 'preview' : 'production'}`
+  : 'development'
+
+const blogIndex = fs
+  .readdirSync(path.resolve(__dirname, './content/blog/en'))
+  .map((f) => f.slice(0, -3))
 
 const config: Configuration = {
   mode: 'universal',
@@ -104,10 +112,8 @@ const config: Configuration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/blog',
     '~/plugins/vue-svgicon',
     '~/plugins/vue-lazyload',
-    '~/plugins/vue-script2',
     '~/plugins/globalComponents',
   ],
 
@@ -115,10 +121,6 @@ const config: Configuration = {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/sitemap-module
-    '@nuxtjs/sitemap',
     // https://nuxt-community.github.io/nuxt-i18n/
     [
       'nuxt-i18n',
@@ -138,7 +140,10 @@ const config: Configuration = {
         },
       },
     ],
-    ['vue-scrollto/nuxt', { offset: -40 }],
+    // Doc: https://github.com/nuxt-community/sitemap-module
+    '@nuxtjs/sitemap',
+    // Doc: https://pwa.nuxtjs.org/
+    '@nuxtjs/pwa',
     '@nuxtjs/amp',
     [
       'nuxt-vitals',
@@ -147,6 +152,9 @@ const config: Configuration = {
         debug: !isProd,
       },
     ],
+    ['vue-scrollto/nuxt', { offset: -40 }],
+    '@nuxtjs/sentry',
+    '~/modules/blog',
   ],
 
   /*
@@ -222,7 +230,7 @@ const config: Configuration = {
         routes.push(`/amp/es${postFix}`)
       })
 
-      blogIndex.articles.forEach((route) => {
+      blogIndex.forEach((route) => {
         routes.push(`/blog/${route}`)
         routes.push(`/amp/blog/${route}`)
 
@@ -261,6 +269,18 @@ const config: Configuration = {
     },
     workbox: {
       offlineAnalytics: true,
+      runtimeCaching: [
+        { urlPattern: 'https://cdn.jsdelivr.net/.*', handler: 'cacheFirst' },
+        {
+          urlPattern: 'https://render.githubusercontent.com/render/math.*',
+          handler: 'cacheFirst',
+          strategyOptions: {
+            cacheExpiration: {
+              maxAgeSeconds: 2592000,
+            },
+          },
+        },
+      ],
     },
   },
 
@@ -278,33 +298,42 @@ const config: Configuration = {
   sitemap: {
     hostname: baseURL,
     exclude: ['/amp/**'],
+    i18n: 'en',
     defaults: {
       changefreq: EnumChangefreq.WEEKLY,
       priority: 0.7,
       lastmod: new Date(),
-      lastmodrealtime: true,
     },
     routes() {
       const websitePages = ['', 'about', 'projects', 'blog']
       const routesEn: ISitemapItemOptionsLoose[] = []
       const routesEs: ISitemapItemOptionsLoose[] = []
 
+      function getI18nLinks(route: string): ILinkItem[] {
+        return [
+          { lang: 'en', url: `${baseURL}${route}` },
+          { lang: 'es', url: `${baseURL}/es${route}` },
+        ]
+      }
+
       // Generate Website routes
       websitePages.forEach((page) => {
         routesEn.push({
           url: `/${page}`,
-          ampLink: `${baseURL}${page === '' ? '' : `/${page}`}`,
+          ampLink: `${baseURL}${page === '' ? '/amp' : `/amp/${page}`}`,
+          links: getI18nLinks(`/${page}`),
         })
       })
 
       // Generate from Blog Posts
       try {
-        blogIndex.articles.map((slug) => {
+        blogIndex.map((slug) => {
           routesEn.push({
             url: `/blog/${slug}`,
-            ampLink: `${baseURL}/blog/${slug}`,
             changefreq: EnumChangefreq.DAILY,
             priority: 0.7,
+            ampLink: `${baseURL}/amp/blog/${slug}`,
+            links: getI18nLinks(`blog/${slug}`),
           })
         })
       } catch (error) {
@@ -315,7 +344,7 @@ const config: Configuration = {
       routesEn.forEach((route) => {
         routesEs.push({
           ...route,
-          url: `/es${route.url === '/' ? '' : route.url}`,
+          url: `/es${route.url}`,
           ampLink: `${baseURL}/amp/es${route.url === '/' ? '' : route.url}`,
         })
       })
@@ -354,6 +383,31 @@ const config: Configuration = {
 
   amp: {
     origin: baseURL,
+  },
+
+  sentry: {
+    config: {
+      environment,
+      release: buildCode,
+      tags: {
+        version: buildCode,
+      },
+      whitelistUrls: [
+        new RegExp(baseURL.replace(new RegExp('^(https?://)'), '')),
+        new RegExp(
+          `${process.env.VERCEL_URL}`.replace(new RegExp('^(https?://)'), '')
+        ),
+      ],
+    },
+    disableServerRelease: true,
+    webpackConfig: {
+      debug: !isProd,
+      release: buildCode,
+      setCommits: {
+        repo: process.env.VERCEL_GITHUB_REPO,
+        commit: commitSha,
+      },
+    },
   },
 }
 
