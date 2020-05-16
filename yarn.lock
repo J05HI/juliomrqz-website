@@ -13,36 +13,37 @@
     raw-loader "^4.0.1"
     url-loader "^4.1.0"
 
-"@ampproject/toolbox-core@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@ampproject/toolbox-core/-/toolbox-core-2.3.0.tgz#f27bd17e01fdc6725c440aefa844f63466c0f37e"
-  integrity sha512-NT+kVR5Rm2cxp12h40IXgPRWmq0cpUdmcgZmgdelplp/q//4aWkt2+llGHR2foQJkwICxMVVlb/XidsHz0Rh9g==
+"@ampproject/toolbox-core@^2.4.0-alpha.1":
+  version "2.4.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@ampproject/toolbox-core/-/toolbox-core-2.4.0-alpha.1.tgz#2e073fafedf46ef4f85326162e5b6c0080076142"
+  integrity sha512-QEIIXBdpevMJSan5JWJ5qLy3/R+V1cngWchKdenmkRzvoDhWWcZyCnUz5+xKhetD9ilPaM71bSJ0dF78OrYBIQ==
   dependencies:
     cross-fetch "3.0.4"
 
-"@ampproject/toolbox-optimizer@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@ampproject/toolbox-optimizer/-/toolbox-optimizer-2.3.1.tgz#ad31d2bbeef8cf863b055bd9a520337f796a957d"
-  integrity sha512-614CKgpHJfVVnns1kHMuXd8uTvE0bhgIEyhnBqQ06Af1s91bKDUKDksGFVd/drGhEYmyX3Y8pizoZgw2tiQtSQ==
+"@ampproject/toolbox-optimizer@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@ampproject/toolbox-optimizer/-/toolbox-optimizer-2.4.0.tgz#16bde73913f8b58a9bf617d37cdc1f21a1222f38"
+  integrity sha512-Bmb+eMF9/VB3H0qPdZy0V5yPSkWe5RwuGbXiMxzqYdJgmMat+NL75EtozQnlpa0uBlESnOGe7bMojm/SA1ImrA==
   dependencies:
-    "@ampproject/toolbox-core" "^2.3.0"
-    "@ampproject/toolbox-runtime-version" "^2.3.1"
+    "@ampproject/toolbox-core" "^2.4.0-alpha.1"
+    "@ampproject/toolbox-runtime-version" "^2.4.0-alpha.1"
     "@ampproject/toolbox-script-csp" "^2.3.0"
     "@ampproject/toolbox-validator-rules" "^2.3.0"
     cssnano "4.1.10"
     domhandler "3.0.0"
-    domutils "2.0.0"
+    domutils "2.1.0"
     htmlparser2 "4.1.0"
+    lru-cache "5.1.1"
     normalize-html-whitespace "1.0.0"
     postcss-safe-parser "4.0.2"
     terser "4.6.13"
 
-"@ampproject/toolbox-runtime-version@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@ampproject/toolbox-runtime-version/-/toolbox-runtime-version-2.3.1.tgz#c1d0d937a7474b958cb8e713ea8be00e7bc724f4"
-  integrity sha512-ocDCSaSUlbgPbuXRVyLU7k+dLGYluKrnfSPKXIwwpGkwNw58JOddvgnQGyB0R/2Ma36nxFA8AAyxjnghLSScpg==
+"@ampproject/toolbox-runtime-version@^2.4.0-alpha.1":
+  version "2.4.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@ampproject/toolbox-runtime-version/-/toolbox-runtime-version-2.4.0-alpha.1.tgz#448c7206d9136e242ac99810141b6bbae6b1674f"
+  integrity sha512-iPOlATHFcaLyiuVdzCKiM4DamTvPpysHc5eW2oYoSMXsxOsAdp4LNyt05biFRJA/7za5+b9P15blPtOucj2WyQ==
   dependencies:
-    "@ampproject/toolbox-core" "^2.3.0"
+    "@ampproject/toolbox-core" "^2.4.0-alpha.1"
 
 "@ampproject/toolbox-script-csp@^2.3.0":
   version "2.3.0"
@@ -1964,10 +1965,10 @@
   dependencies:
     "@types/webpack" "*"
 
-"@types/fs-extra@8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-8.1.0.tgz#1114834b53c3914806cd03b3304b37b3bd221a4d"
-  integrity sha512-UoOfVEzAUpeSPmjm7h1uk5MH6KZma2z2O7a75onTGjnNvAvMVrPzPL/vBbT65iIGHWj6rokwfmYcmxmlSf2uwg==
+"@types/fs-extra@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-8.1.1.tgz#1e49f22d09aa46e19b51c0b013cb63d0d923a068"
+  integrity sha512-TcUlBem321DFQzBNuz8p0CLLKp0VvF/XH9E4KHNmgwyp4E3AfgI5cjiIVZWlbfThBop2qxFIh4+LeY6hVWWZ2w==
   dependencies:
     "@types/node" "*"
 
@@ -5145,10 +5146,10 @@ domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-domutils@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.0.0.tgz#15b8278e37bfa8468d157478c58c367718133c08"
-  integrity sha512-n5SelJ1axbO636c2yUtOGia/IcJtVtlhQbFiVDBZHKV5ReJO1ViX7sFEemtuyoAnBxk5meNSYgA8V4s0271efg==
+domutils@2.1.0, domutils@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.1.0.tgz#7ade3201af43703fde154952e3a868eb4b635f16"
+  integrity sha512-CD9M0Dm1iaHfQ1R/TI+z3/JWp/pgub0j4jIQKH89ARR4ATAV2nbaOQS5XxU9maJP5jHaPdDDQSEHuE2UmpUTKg==
   dependencies:
     dom-serializer "^0.2.1"
     domelementtype "^2.0.1"
@@ -5161,15 +5162,6 @@ domutils@^1.5.1, domutils@^1.7.0:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
-
-domutils@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.1.0.tgz#7ade3201af43703fde154952e3a868eb4b635f16"
-  integrity sha512-CD9M0Dm1iaHfQ1R/TI+z3/JWp/pgub0j4jIQKH89ARR4ATAV2nbaOQS5XxU9maJP5jHaPdDDQSEHuE2UmpUTKg==
-  dependencies:
-    dom-serializer "^0.2.1"
-    domelementtype "^2.0.1"
-    domhandler "^3.0.0"
 
 dot-prop@^3.0.0:
   version "3.0.0"
@@ -6316,7 +6308,14 @@ from2@^2.1.0, from2@^2.1.1:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-front-matter@3.2.0, front-matter@^3.0.1:
+front-matter@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/front-matter/-/front-matter-3.2.1.tgz#88be839638f397bbbcb0d61ac03bd08abb4f0a40"
+  integrity sha512-YUhgEhbL6tG+Ok3vTGIoSDKqcr47aSDvyhEqIv8B+YuBJFsPnOiArNXTPp2yO07NL+a0L4+2jXlKlKqyVcsRRA==
+  dependencies:
+    js-yaml "^3.13.1"
+
+front-matter@^3.0.1:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/front-matter/-/front-matter-3.2.0.tgz#371c6862fd8feb2c382374c34e4cd3391cb8f81f"
   integrity sha512-/+aOB9LCJQNO+AsgCx75lF5YgNLq7KBzGModuADYAtop+GIaKgX++HVLBrzCPMwKaJKVjupumzx4aM8PLQsqtg==
@@ -8818,6 +8817,13 @@ lpad-align@^1.0.1:
     longest "^1.0.0"
     meow "^3.3.0"
 
+lru-cache@5.1.1, lru-cache@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
+  integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
+  dependencies:
+    yallist "^3.0.2"
+
 lru-cache@^4.0.0, lru-cache@^4.0.1, lru-cache@^4.1.2, lru-cache@^4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
@@ -8825,13 +8831,6 @@ lru-cache@^4.0.0, lru-cache@^4.0.1, lru-cache@^4.1.2, lru-cache@^4.1.5:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
-
-lru-cache@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
-  integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
-  dependencies:
-    yallist "^3.0.2"
 
 lru_map@^0.3.3:
   version "0.3.3"
