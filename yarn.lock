@@ -2392,10 +2392,10 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/test-utils@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-1.0.2.tgz#68134747cb88d996e4c9703ca4b103b4d23fda14"
-  integrity sha512-pnRWJbb0cLqjSJIKRpqoSISeYtufEn8D16VmhlCrDWIVt4iAY4Og4JpOPmFytvtQVz96p6n7T6ERI55ue6n0Ew==
+"@vue/test-utils@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-1.0.3.tgz#587c4dd9b424b66022f188c19bc605da2ce91c6f"
+  integrity sha512-mmsKXZSGfvd0bH05l4SNuczZ2MqlJH2DWhiul5wJXFxbf/gRRd2UL4QZgozEMQ30mRi9i4/+p4JJat8S4Js64Q==
   dependencies:
     dom-event-types "^1.0.0"
     lodash "^4.17.15"
@@ -4835,6 +4835,13 @@ decompress-response@^4.2.0:
   dependencies:
     mimic-response "^2.0.0"
 
+decompress-response@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/decompress-response/-/decompress-response-6.0.0.tgz#ca387612ddb7e104bd16d85aab00d5ecf09c66fc"
+  integrity sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==
+  dependencies:
+    mimic-response "^3.1.0"
+
 decompress-tar@^4.0.0, decompress-tar@^4.1.0, decompress-tar@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/decompress-tar/-/decompress-tar-4.1.1.tgz#718cbd3fcb16209716e70a26b84e7ba4592e5af1"
@@ -6451,7 +6458,7 @@ get-proxy@^2.0.0:
   dependencies:
     npm-conf "^1.1.0"
 
-get-stdin@7.0.0, get-stdin@^7.0.0:
+get-stdin@7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-7.0.0.tgz#8d5de98f15171a125c5e516643c7a6d0ea8a96f6"
   integrity sha512-zRKcywvrXlXsA0v0i9Io4KDRaAw7+a1ZpjRwl9Wox8PFlVCCHra7E9c4kqXCoCM9nR5tBkaTTZRBoCm60bFqTQ==
@@ -6465,6 +6472,11 @@ get-stdin@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
   integrity sha512-jp4tHawyV7+fkkSKyvjuLZswblUtz+SQKzSWnBbii16BuZksJlU1wuBYXY75r+duh/llF1ur6oNwi+2ZzjKZ7g==
+
+get-stdin@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-8.0.0.tgz#cbad6a73feb75f6eeb22ba9e01f89aa28aa97a53"
+  integrity sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==
 
 get-stream@3.0.0, get-stream@^3.0.0:
   version "3.0.0"
@@ -8454,10 +8466,10 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-known-css-properties@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.18.0.tgz#d6e00b56ee1d5b0d171fd86df1583cfb012c521f"
-  integrity sha512-69AgJ1rQa7VvUsd2kpvVq+VeObDuo3zrj0CzM5Slmf6yduQFAI2kXPDQJR2IE/u6MSAUOJrwSzjg5vlz8qcMiw==
+known-css-properties@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.19.0.tgz#5d92b7fa16c72d971bda9b7fe295bdf61836ee5b"
+  integrity sha512-eYboRV94Vco725nKMlpkn3nV2+96p9c3gKXRsYqAJSswSENvBhN7n5L+uDhY58xQa0UukWsDMTGELzmD8Q+wTA==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -8743,6 +8755,13 @@ log-symbols@^3.0.0:
   integrity sha512-dSkNGuI7iG3mfvDzUuYZyvk5dD9ocYCYzNU6CYDE6+Xqd+gwme6Z00NS3dUh8mq/73HaEtT7m6W+yUPtU6BZnQ==
   dependencies:
     chalk "^2.4.2"
+
+log-symbols@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-4.0.0.tgz#69b3cc46d20f448eccdb75ea1fa733d9e821c920"
+  integrity sha512-FN8JBzLx6CzeMrB0tg6pqlGU1wCrXW+ZXGH481kfsBqer0hToTIiHdjH4Mq8xJUbvATujKCvaREGWpGUionraA==
+  dependencies:
+    chalk "^4.0.0"
 
 log-update@^4.0.0:
   version "4.0.0"
@@ -9085,24 +9104,7 @@ meow@^3.3.0:
     redent "^1.0.0"
     trim-newlines "^1.0.0"
 
-meow@^6.1.0:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/meow/-/meow-6.1.1.tgz#1ad64c4b76b2a24dfb2f635fddcadf320d251467"
-  integrity sha512-3YffViIt2QWgTy6Pale5QpopX/IvU3LPL03jOTqp6pGj3VjesdO/U8CuHMKpnQr4shCNCM5fd5XFFvIIl6JBHg==
-  dependencies:
-    "@types/minimist" "^1.2.0"
-    camelcase-keys "^6.2.2"
-    decamelize-keys "^1.1.0"
-    hard-rejection "^2.1.0"
-    minimist-options "^4.0.2"
-    normalize-package-data "^2.5.0"
-    read-pkg-up "^7.0.1"
-    redent "^3.0.0"
-    trim-newlines "^3.0.0"
-    type-fest "^0.13.1"
-    yargs-parser "^18.1.3"
-
-meow@^7.0.0:
+meow@^7.0.0, meow@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/meow/-/meow-7.0.1.tgz#1ed4a0a50b3844b451369c48362eb0515f04c1dc"
   integrity sha512-tBKIQqVrAHqwit0vfuFPY3LlzJYkEOFyKa3bPgxzNl6q/RtN8KQ+ALYEASYuFayzSAsjlhXj/JZ10rH85Q6TUw==
@@ -9224,6 +9226,11 @@ mimic-response@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-2.1.0.tgz#d13763d35f613d09ec37ebb30bac0469c0ee8f43"
   integrity sha512-wXqjST+SLt7R009ySCglWBCFpjUygmCIfD790/kVbiGmUgfYGuB14PiTd5DwVxSV4NcYHjzMkoj5LjQZwTQLEA==
+
+mimic-response@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
+  integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
 min-indent@^1.0.0:
   version "1.0.0"
@@ -9467,10 +9474,10 @@ node-addon-api@^1.7.1:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-1.7.1.tgz#cf813cd69bb8d9100f6bdca6755fc268f54ac492"
   integrity sha512-2+DuKodWvwRTrCfKOeR24KIc5unKjOh8mz17NCzVnHWfjAdDqbfbjqh7gUT+BkXBRQM52+xCHciKWonJ3CbJMQ==
 
-node-addon-api@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-2.0.0.tgz#f9afb8d777a91525244b01775ea0ddbe1125483b"
-  integrity sha512-ASCL5U13as7HhOExbT6OlWJJUV/lLzL2voOSP1UVehpRD8FbSrSDjfScK/KwAvVTI5AS6r4VwbOMlIqtvRidnA==
+node-addon-api@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.0.0.tgz#812446a1001a54f71663bed188314bba07e09247"
+  integrity sha512-sSHCgWfJ+Lui/u+0msF3oyCgvdkhxDbkCS6Q8uiJquzOimkJBvX6hl5aSSA7DR1XbMpdM8r7phjcF63sF4rkKg==
 
 node-emoji@^1.8.1:
   version "1.10.0"
@@ -11106,7 +11113,7 @@ postcss-value-parser@^3.0.0, postcss-value-parser@^3.2.3, postcss-value-parser@^
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha512-pISE66AbVkp4fDQ7VHBwRNXzAAKJjw4Vw7nWI/+Q3vuly7SNfgYXvm6i5IgFylHGK5sP/xHAbB7N49OS4gWNyQ==
 
-postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2, postcss-value-parser@^4.0.3:
+postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2, postcss-value-parser@^4.0.3, postcss-value-parser@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.1.0.tgz#443f6a20ced6481a2bda4fa8532a6e55d789a2cb"
   integrity sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==
@@ -11129,7 +11136,7 @@ postcss@7.0.28:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@7.x.x, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.11, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.18, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.27, postcss@^7.0.5, postcss@^7.0.6, postcss@^7.0.7:
+postcss@7.x.x, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.11, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.18, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.27, postcss@^7.0.30, postcss@^7.0.5, postcss@^7.0.6, postcss@^7.0.7:
   version "7.0.30"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.30.tgz#cc9378beffe46a02cbc4506a0477d05fcea9a8e2"
   integrity sha512-nu/0m+NtIzoubO+xdAlwZl/u5S5vi/y6BCsoL8D+8IxsD3XvBS8X4YEADNIVXKVuQvduiucnRv+vPIqj56EGMQ==
@@ -12265,19 +12272,19 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-sharp@0.25.2:
-  version "0.25.2"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.25.2.tgz#f9003d73be50e9265e98f79f04fe53d8c66a3967"
-  integrity sha512-l1GN0kFNtJr3U9i9pt7a+vo2Ij0xv4tTKDIPx8W6G9WELhPwrMyZZJKAAQNBSI785XB4uZfS5Wpz8C9jWV4AFQ==
+sharp@0.25.3:
+  version "0.25.3"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.25.3.tgz#fcb4f13fa9ce7d8a2d8273ebb40f375953cad937"
+  integrity sha512-qV3n30NaBEhAjBhFo+d8h5N4X3DHteFdwxXoWUiubk72G0VKT5fX50nlcawGYjPqfFV4Z2e/G9gDPeSGAdn/gg==
   dependencies:
     color "^3.1.2"
     detect-libc "^1.0.3"
-    node-addon-api "^2.0.0"
+    node-addon-api "^3.0.0"
     npmlog "^4.1.2"
     prebuild-install "^5.3.3"
-    semver "^7.1.3"
-    simple-get "^3.1.0"
-    tar "^6.0.1"
+    semver "^7.3.2"
+    simple-get "^4.0.0"
+    tar "^6.0.2"
     tunnel-agent "^0.6.0"
 
 shebang-command@^1.2.0:
@@ -12329,12 +12336,21 @@ simple-concat@^1.0.0:
   resolved "https://registry.yarnpkg.com/simple-concat/-/simple-concat-1.0.0.tgz#7344cbb8b6e26fb27d66b2fc86f9f6d5997521c6"
   integrity sha1-c0TLuLbib7J9ZrL8hvn21Zl1IcY=
 
-simple-get@^3.0.3, simple-get@^3.1.0:
+simple-get@^3.0.3:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-3.1.0.tgz#b45be062435e50d159540b576202ceec40b9c6b3"
   integrity sha512-bCR6cP+aTdScaQCnQKbPKtJOKDp/hj9EDLJo3Nw4y1QksqaovlW/bnptB6/c1e+qmNIDHRK+oXFDdEqBT8WzUA==
   dependencies:
     decompress-response "^4.2.0"
+    once "^1.3.1"
+    simple-concat "^1.0.0"
+
+simple-get@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-4.0.0.tgz#73fa628278d21de83dadd5512d2cc1f4872bd675"
+  integrity sha512-ZalZGexYr3TA0SwySsr5HlgOOinS4Jsa8YB2GJ6lUNAazyAu4KG/VmzMTwAt2YVXzzVj8QmefmAonZIK2BSGcQ==
+  dependencies:
+    decompress-response "^6.0.0"
     once "^1.3.1"
     simple-concat "^1.0.0"
 
@@ -12918,10 +12934,10 @@ stylelint-webpack-plugin@^2.0.0:
     micromatch "^4.0.2"
     schema-utils "^2.6.6"
 
-stylelint@13.3.3:
-  version "13.3.3"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.3.3.tgz#e267a628ebfc1adad6f5a1fe818724c34171402b"
-  integrity sha512-j8Oio2T1YNiJc6iXDaPYd74Jg4zOa1bByNm/g9/Nvnq4tDPsIjMi46jhRZyPPktGPwjJ5FwcmCqIRlH6PVP8mA==
+stylelint@13.4.0:
+  version "13.4.0"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.4.0.tgz#15071c4cc15138365acf2396395c17823cf652b9"
+  integrity sha512-VOAOkTil5GmUfEJH+O6LdsggoUt692QTSu+YfLhVP5sFTVCVp0+PS2oCjjG8ZdUAP9aNNNYxTP6GWVbB1tl2bg==
   dependencies:
     "@stylelint/postcss-css-in-js" "^0.37.1"
     "@stylelint/postcss-markdown" "^0.36.1"
@@ -12932,7 +12948,7 @@ stylelint@13.3.3:
     debug "^4.1.1"
     execall "^2.0.0"
     file-entry-cache "^5.0.1"
-    get-stdin "^7.0.0"
+    get-stdin "^8.0.0"
     global-modules "^2.0.0"
     globby "^11.0.0"
     globjoin "^0.1.4"
@@ -12940,15 +12956,15 @@ stylelint@13.3.3:
     ignore "^5.1.4"
     import-lazy "^4.0.0"
     imurmurhash "^0.1.4"
-    known-css-properties "^0.18.0"
+    known-css-properties "^0.19.0"
     leven "^3.1.0"
     lodash "^4.17.15"
-    log-symbols "^3.0.0"
+    log-symbols "^4.0.0"
     mathml-tag-names "^2.1.3"
-    meow "^6.1.0"
+    meow "^7.0.1"
     micromatch "^4.0.2"
     normalize-selector "^0.2.0"
-    postcss "^7.0.27"
+    postcss "^7.0.30"
     postcss-html "^0.36.0"
     postcss-less "^3.1.4"
     postcss-media-query-parser "^0.2.3"
@@ -12959,7 +12975,7 @@ stylelint@13.3.3:
     postcss-scss "^2.0.0"
     postcss-selector-parser "^6.0.2"
     postcss-syntax "^0.36.2"
-    postcss-value-parser "^4.0.3"
+    postcss-value-parser "^4.1.0"
     resolve-from "^5.0.0"
     slash "^3.0.0"
     specificity "^0.4.1"
@@ -13139,7 +13155,7 @@ tar-stream@^2.0.0:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
-tar@^6.0.1:
+tar@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.0.2.tgz#5df17813468a6264ff14f766886c622b84ae2f39"
   integrity sha512-Glo3jkRtPcvpDlAs/0+hozav78yoXKFr+c4wgw62NNMO3oo4AaJdCo21Uu7lcwr55h39W2XD1LMERc64wtbItg==
