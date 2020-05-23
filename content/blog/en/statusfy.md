@@ -1,10 +1,9 @@
 ---
 title: "Statusfy, A Marvelous Open Source Status Page System"
-slug: "statusfy"
 description: "Statusfy is a Status Page System, easy to use and completely Open Source. You can easily create a fast System either Static Generated or Server Rendered."
 published: "2018-11-14T14:58:34Z"
 created: "2018-11-14T14:58:34.140255Z"
-modified: '2020-05-09T20:25:25Z'
+modified: '2020-05-23T17:06:42Z'
 canonical: https://aceforth.com/blog/statusfy
 ---
 
@@ -90,22 +89,22 @@ npm run start # OR yarn start
 
 ## What's next
 
-In the next couple of months, we're going to continue to improve the [documentation][statusy-docs], <NuxtLink :to="`${localePath('blog')}`">create tutorials</NuxtLink>, [fix bugs][statusy-github], create a Project Editor, and add [extra features][statusy-docs-todo].
+In the next couple of months, we're going to continue to improve the [documentation][statusy-docs], [create tutorials][aceforth-blog], [fix bugs][statusy-github], create a Project Editor, and add [extra features][statusy-docs-todo].
 
 
 ## Contribute to Statusfy
 
-Statusfy is a completely open source project, sponsored by [Bazzite][bazzite-home]. It's still a work in progress, so any contribution is very welcome. We're passionate about building a versatile and a lower cost solution.
+Statusfy is a completely open source project, sponsored by [Aceforth][aceforth-home]. It's still a work in progress, so any contribution is very welcome. We're passionate about building a versatile and a lower cost solution.
 
 You can also support us by giving a [GitHub star ★][statusy-github] and spread the word 🤓.
 
 
-[statusfy-home]: https://statusfy.co/
+[statusfy-home]: https://aceforth.com/products/statusfy
 [statusy-docs]: https://docs.statusfy.co
 [statusy-docs-todo]: https://docs.statusfy.co/guide/#todo
-[statusy-blog]: https://statusfy.co/blog
 [statusy-github]: https://github.com/aceforth/statusfy
-[bazzite-home]: https://aceforth.com
+[aceforth-home]: https://aceforth.com
+[aceforth-blog]: https://aceforth.com/blog
 [jamstack]: https://jamstack.org/
 [serverless]: https://serverless.com/learn/overview/
 [isomorphic]: https://www.netlify.com/blog/2017/06/06/jamstack-vs-isomorphic-server-side-rendering/

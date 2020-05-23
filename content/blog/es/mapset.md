@@ -1,10 +1,9 @@
 ---
 title: "Mapset, una herramienta nueva, innovadora y dinámica"
-slug: "mapset"
 description: "Hoy, tenemos el agrado de presentarles Mapset. Una herramienta nueva, innovadora y dinámica diseñada para administrar pantallas en diferentes lenguajes de codificación de mainframe."
 published: "2018-06-05T15:53:07Z"
 created: "2018-06-05T15:53:07Z"
-modified: "2020-05-09T20:25:25Z"
+modified: "2020-05-23T17:06:42Z"
 canonical: "https://aceforth.com/es/blog/mapset-new-innovative-dynamic-tool"
 ---
 
@@ -14,7 +13,7 @@ Puedes dibujar a través de nuestra interfaz 'Drag & Drop', generar un nuevo BMS
 
 Cuando comenzamos a crear Mapset, nos enfocamos en tres cosas: Innovación, Eficiencia y Conveniencia. Mapset se volvió 15 veces más rápido que los métodos convencionales o cualquier otra herramienta disponible. Es Económico, muy fácil de usar y los usuarios no necesitan ser un experto en COBOL o CICS.
 
-<ImageBlog src="blog/mapset/design-create-advanced-editor.jpg" width="1024" height="535" alt="Mapset - Editor Avanzado"/>
+<blog-image src="blog/mapset/design-create-advanced-editor.jpg" width="1024" height="535" alt="Mapset - Editor Avanzado"></blog-image>
 
 ## Ventajas
 
@@ -40,7 +39,7 @@ Con Mapset generamos automáticamente archivos HTML a partir de BMS existente ut
 
 Mapset define su esencia en tres pilares fundamentales: Diseña, Crea y Convierte.
 
-<ImageBlog src="blog/mapset/design-create-convert.jpg" width="1199" height="628" alt="Mapset - Como Funciona"/>
+<blog-image src="blog/mapset/design-create-convert.jpg" width="1199" height="628" alt="Mapset - Como Funciona"></blog-image>
 
 ### Diseña
 

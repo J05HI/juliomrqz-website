@@ -1,8 +1,7 @@
 ---
-slug: "non-linearity-in-multi-attribute-analysis"
 published: '2013-09-08'
 created: '2017-09-18'
-modified: '2020-05-09T20:25:25Z'
+modified: '2020-05-23T17:06:42Z'
 description: >-
   Through time, deterministic methods have been used for prediction of reservoir
   properties that are used to convert seismic data to the desired reservoir

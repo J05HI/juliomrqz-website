@@ -1,10 +1,9 @@
 ---
-slug: "nuxt-optimized-images"
 title: "A new way to optimize the images in your Nuxt projects"
 description: "We created a new module to automatically optimize images used in Nuxt.js projects (JPEG, PNG, SVG, WebP and GIF)."
 published: "2019-03-15T18:00:50Z"
 created: "2019-03-15T18:00:50Z"
-modified: "2020-05-12T15:32:32Z"
+modified: "2020-05-23T17:06:42Z"
 canonical: "https://aceforth.com/blog/nuxt-optimized-images"
 ---
 

@@ -22,11 +22,11 @@ export default Vue.extend({
       required: true,
     },
     width: {
-      type: String,
+      type: [String, Number],
       required: true,
     },
     height: {
-      type: String,
+      type: [String, Number],
       required: true,
     },
     classes: {
@@ -36,7 +36,7 @@ export default Vue.extend({
   },
   computed: {
     image() {
-      return require(`../assets/images/${this.src}`)
+      return require(`~/assets/images/${this.src}`)
     },
   },
 })

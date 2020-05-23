@@ -1,10 +1,9 @@
 ---
-slug: "nuxt-netlify"
 title: "Te presentamos Nuxt Netlify"
 description: "Creamos un nuevo módulo para Nuxt.js que soporta la creación dinámica de reglas de redirecciones y cabecera para tu sitio en Netlify."
 published: "2019-03-14T17:52:20Z"
 created: "2019-03-14T17:52:20Z"
-modified: "2020-05-12T15:32:32Z"
+modified: "2020-05-23T17:06:42Z"
 canonical: "https://aceforth.com/es/blog/nuxt-netlify"
 ---
 

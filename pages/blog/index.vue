@@ -33,11 +33,14 @@ import SeoHead from '~/components/mixins/SeoHead'
 
 export default {
   mixins: [SeoHead],
-  async asyncData({ app, $sentry }) {
+  async asyncData({ app, $sentry, $content }) {
     let posts = []
 
     try {
-      posts = await app.$blog.getArticles(app.i18n.locale)
+      posts = await $content('blog', app.i18n.locale)
+        .only(['slug', 'title', 'description', 'published'])
+        .sortBy('created', 'desc')
+        .fetch()
     } catch (error) {
       $sentry.captureException(error)
     }

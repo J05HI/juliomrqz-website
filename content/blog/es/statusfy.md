@@ -1,10 +1,9 @@
 ---
 title: "Statusfy, Un Estupendo Sistema de Página de Estado de Código Abierto"
-slug: "statusfy"
 description: "Statusfy es un Sistema de Página de Estado, fácil de usar y completamente de código abierto. Puedes crear fácilmente un Sistema rápido, ya sea Estático o Renderizado por Servidor, e implementarlo fácilmente en una variedad de servicios de alojamiento."
 published: "2018-11-14T14:58:34Z"
 created: "2018-11-14T14:58:34.140255Z"
-modified: "2020-05-09T20:25:25Z"
+modified: "2020-05-23T17:06:42Z"
 canonical: https://aceforth.com/es/blog/statusfy
 ---
 
@@ -87,21 +86,22 @@ npm run start # O yarn start
 
 ## Que sigue
 
-En los próximos meses, continuaremos mejorando la [documentación][statusy-docs], <NuxtLink :to="`${localePath('blog')}`">crearemos nuevos tutoriales</NuxtLink>, [corregiremos errores][statusy-github], crearemos un Editor de Proyecto y agregaremos [funcionalidades adicionales][statusy-docs-todo].
+En los próximos meses, continuaremos mejorando la [documentación][statusy-docs], [crearemos nuevos tutoriales][aceforth-blog], [corregiremos errores][statusy-github], crearemos un Editor de Proyecto y agregaremos [funcionalidades adicionales][statusy-docs-todo].
 
 ## Contribuye a Statusfy
 
-Statusfy es un proyecto completamente abierto, patrocinado por [Bazzite][bazzite-home]. Todavía es un trabajo en progreso, por lo que cualquier contribución es bienvenida. Nos apasiona construir una solución versátil y de menor costo.
+Statusfy es un proyecto completamente abierto, patrocinado por [Aceforth][aceforth-home]. Todavía es un trabajo en progreso, por lo que cualquier contribución es bienvenida. Nos apasiona construir una solución versátil y de menor costo.
 
 También puedes ayudarnos dando una [estrella en GitHub ★][statusy-github] y corriendo la voz 🤓.
 
 <!-- enlaces -->
 
+[statusfy-home]: https://aceforth.com/es/products/statusfy
 [statusy-docs]: https://docs.statusfy.co/es/
 [statusy-docs-todo]: https://docs.statusfy.co/es/guide/#por-hacer
-[statusy-blog]: https://statusfy.co/es/blog
 [statusy-github]: https://github.com/aceforth/statusfy
-[bazzite-home]: https://aceforth.com/es/
+[aceforth-home]: https://aceforth.com/es/
+[aceforth-blog]: https://aceforth.com/blog
 [jamstack]: https://jamstack.org/
 [serverless]: https://serverless.com/learn/overview/
 [isomorphic]: https://www.netlify.com/blog/2017/06/06/jamstack-vs-isomorphic-server-side-rendering/

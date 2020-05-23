@@ -1,15 +1,14 @@
-import path from 'path'
-import * as fs from 'fs-extra'
 import { Configuration } from '@nuxt/types'
 import { ISitemapItemOptionsLoose, EnumChangefreq, ILinkItem } from 'sitemap'
-// @ts-ignore
-import Mode from 'frontmatter-markdown-loader/mode'
+import readingTime from 'reading-time'
 // @ts-ignore
 import colors from '@tailwindcss/ui/colors'
+// @ts-ignore
+import { $content } from '@nuxt/content'
 
 import pkg from './package.json'
-import { renderMarkdown } from './utils/markdown'
 import { ampify } from './utils/ampify'
+import { BlogPostParsed } from "./interfaces";
 
 const isProd = process.env.NODE_ENV === 'production'
 const gaTrackingID = process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-Y'
@@ -27,14 +26,14 @@ const environment = isProd
   ? `${isPreview ? 'preview' : 'production'}`
   : 'development'
 
-const blogIndex = fs
-  .readdirSync(path.resolve(__dirname, './content/blog/en'))
-  .map((f) => f.slice(0, -3))
-
 // TODO: remove when types get updated
 interface NuxtConfiguration extends Configuration {
   components?: any
   export: Configuration['generate']
+
+  hooks: Configuration['hooks'] & {
+    'content:file:beforeInsert'?(document: BlogPostParsed): void
+  }
 }
 
 const config: NuxtConfiguration = {
@@ -43,10 +42,11 @@ const config: NuxtConfiguration = {
 
   components: {
     dirs: [
-      '~/components',
+      { path: '~/components', pattern: '*.vue' },
       {
         path: '~/components/blog/',
         prefix: 'blog',
+        pattern: '*.vue',
       },
     ],
   },
@@ -117,7 +117,6 @@ const config: NuxtConfiguration = {
    */
   css: [
     'github-markdown-css/github-markdown.css',
-    '~/assets/css/prism-theme.css',
     '~/assets/css/svg-icon.css',
     '~/assets/inter/inter.css',
     '~/assets/css/main.css',
@@ -129,7 +128,7 @@ const config: NuxtConfiguration = {
   plugins: [
     '~/plugins/vue-svgicon',
     '~/plugins/vue-lazyload',
-    '~/plugins/vue-lazy-hydration',
+    '~/plugins/global-components',
   ],
 
   /*
@@ -159,6 +158,7 @@ const config: NuxtConfiguration = {
     '@nuxtjs/sitemap',
     // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
+    '@nuxt/content',
     '@nuxtjs/amp',
     [
       'nuxt-vitals',
@@ -169,7 +169,6 @@ const config: NuxtConfiguration = {
     ],
     ['vue-scrollto/nuxt', { offset: -40 }],
     '@nuxtjs/sentry',
-    '~/modules/blog',
   ],
 
   /*
@@ -190,23 +189,6 @@ const config: NuxtConfiguration = {
    ** Build configuration
    */
   build: {
-    extend(config) {
-      config.module &&
-        config.module.rules.push({
-          test: /\.md$/,
-          loader: 'frontmatter-markdown-loader',
-          include: path.resolve(__dirname, 'content'),
-          options: {
-            mode: [Mode.META, Mode.VUE_COMPONENT],
-            markdown: (body: string) => {
-              return renderMarkdown(body)
-            },
-            vue: {
-              root: 'article-content',
-            },
-          },
-        })
-    },
     postcss: {
       plugins: {
         'postcss-nested': {},
@@ -233,9 +215,10 @@ const config: NuxtConfiguration = {
    */
   export: {
     fallback: '404.html',
-    routes() {
+    async routes() {
       const routes: string[] = ['/', '/about', '/projects', '/blog']
 
+      // other routes
       routes.forEach((route) => {
         const postFix = route === '/' ? '' : route
 
@@ -245,12 +228,14 @@ const config: NuxtConfiguration = {
         routes.push(`/amp/es${postFix}`)
       })
 
-      blogIndex.forEach((route) => {
-        routes.push(`/blog/${route}`)
-        routes.push(`/amp/blog/${route}`)
+      // blog routes
+      const blogIndex: { slug: string }[] = await $content('blog', 'en')
+        .only(['slug'])
+        .fetch()
 
-        routes.push(`/es/blog/${route}`)
-        routes.push(`/amp/es/blog/${route}`)
+      blogIndex.forEach((route) => {
+        routes.push(`/amp/blog/${route.slug}`)
+        routes.push(`/amp/es/blog/${route.slug}`)
       })
 
       return routes
@@ -319,7 +304,7 @@ const config: NuxtConfiguration = {
       priority: 0.7,
       lastmod: new Date(),
     },
-    routes() {
+    async routes() {
       const websitePages = ['', 'about', 'projects', 'blog']
       const routesEn: ISitemapItemOptionsLoose[] = []
       const routesEs: ISitemapItemOptionsLoose[] = []
@@ -342,13 +327,19 @@ const config: NuxtConfiguration = {
 
       // Generate from Blog Posts
       try {
+        const blogIndex: {
+          slug: string
+          modified: string
+        }[] = await $content('blog', 'en').only(['slug', 'modified']).fetch()
+
         blogIndex.map((slug) => {
           routesEn.push({
-            url: `/blog/${slug}`,
+            url: `/blog/${slug.slug}`,
             changefreq: EnumChangefreq.DAILY,
             priority: 0.7,
-            ampLink: `${baseURL}/amp/blog/${slug}`,
-            links: getI18nLinks(`blog/${slug}`),
+            lastmodISO: new Date(slug.modified).toISOString(),
+            ampLink: `${baseURL}/amp/blog/${slug.slug}`,
+            links: getI18nLinks(`/blog/${slug.slug}`),
           })
         })
       } catch (error) {
@@ -370,7 +361,7 @@ const config: NuxtConfiguration = {
 
   typescript: {
     typeCheck: {
-      eslint: true,
+      eslint: false,
     },
   },
 
@@ -394,6 +385,13 @@ const config: NuxtConfiguration = {
         }
       },
     },
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const { minutes } = readingTime(document.text)
+
+        document.readingTime = minutes
+      }
+    }
   },
 
   amp: {
@@ -421,6 +419,14 @@ const config: NuxtConfiguration = {
       setCommits: {
         repo: process.env.VERCEL_GITHUB_REPO,
         commit: commitSha,
+      },
+    },
+  },
+
+  content: {
+    markdown: {
+      prism: {
+        theme: '~/assets/css/prism-theme.css',
       },
     },
   },

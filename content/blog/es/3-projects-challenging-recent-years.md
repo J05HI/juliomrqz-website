@@ -1,10 +1,9 @@
 ---
-slug: 3-projects-challenging-recent-years
 title: '3 proyectos que me han desafiado considerablemente en los ultimo años'
 description: "En los últimos años, he trabajado en grandes proyectos, tres de ellos han desafiado mi capacidad para resolver problemas, además de recordarme mi amor por crear cosas nuevas."
 created: '2019-08-30T16:41:28Z'
 published: '2019-08-30T21:20:28Z'
-modified: '2020-05-09T20:25:25Z'
+modified: '2020-05-23T17:06:42Z'
 ---
 
 
@@ -16,7 +15,7 @@ En los últimos años, he trabajado en grandes proyectos, tres de ellos me han d
 
 ## Un maravilloso Sistema de Página de estado de Código Abierto
 
-<ImageBlog src="blog/3-projects-challenging-recent-years/statusfy.png" width="1200" height="589" alt="Statusfy - Un maravilloso Sistema de Página de estado de Código Abierto"/>
+<blog-image src="blog/3-projects-challenging-recent-years/statusfy.png" width="1200" height="589" alt="Statusfy - Un maravilloso Sistema de Página de estado de Código Abierto"></blog-image>
 
 [Statusfy][statusfy-home] es un Sistema de Páginas de Estado, fácil de usar y completamente **Open Source**. El objetivo que se perseguía era reducir los costos y la complejidad proporcionando una alternativa de código abierto más simple y versátil.
 
@@ -26,7 +25,7 @@ Se creó con Vue, [Nuxt.js][nuxt-home], [Tailwind CSS][tailwindcss-express] y Ex
 
 ## Diseña, crea y convierte archivos mainframe a través de una interfaz dinámica
 
-<ImageBlog src="blog/3-projects-challenging-recent-years/mapset.png" width="1200" height="589" alt="Mapset - Diseña, crea y convierte archivos mainframe a través de una interfaz dinámica"/>
+<blog-image src="blog/3-projects-challenging-recent-years/mapset.png" width="1200" height="589" alt="Mapset - Diseña, crea y convierte archivos mainframe a través de una interfaz dinámica"></blog-image>
 
 [Mapset][mapset-home] es una herramienta innovadora y dinámica basada en la nube diseñada para gestionar pantallas en diferentes lenguajes de codificación de mainframe, que te permite diseñar, crear y convertir archivos de mainframe a través de una interfaz dinámica.
 
@@ -38,7 +37,7 @@ Debido a que queríamos ofrecer una solución de bajo coste, tuvimos que reducir
 
 ## Investigación Científica
 
-<ImageBlog src="blog/3-projects-challenging-recent-years/scientific-article.png" width="1200" height="589" alt="Investigación Científica - Interacción entre las placas de los Andes del Norte, el Caribe y América del Sur"/>
+<blog-image src="blog/3-projects-challenging-recent-years/scientific-article.png" width="1200" height="589" alt="Investigación Científica - Interacción entre las placas de los Andes del Norte, el Caribe y América del Sur"></blog-image>
 
 Cuando estaba en la universidad, trabajé como Asistente de Investigación en el **Laboratorio de Geodesia Satelital y Sismotectónica** de la *Universidad Simón Bolívar* (Caracas, Venezuela). Trabajamos durante algunos años en un proyecto muy interesante, encontrando *la interacción de la placa de los Andes del Norte con las placas del Caribe y Sudamérica en el noroeste de Sudamérica a partir de datos geodésicos y sísmicos del GPS*. 
 

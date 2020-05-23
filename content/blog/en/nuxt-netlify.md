@@ -1,10 +1,9 @@
 ---
-slug: "nuxt-netlify"
 title: "Introducing you Nuxt Netlify"
 description: "We created a new module for Nuxt.js that supports the dynamic creation of redirects and header rules for your site in Netlify."
 published: "2019-03-14T17:52:20Z"
 created: "2019-03-14T17:52:20Z"
-modified: "2020-05-12T15:32:32Z"
+modified: "2020-05-23T17:06:42Z"
 canonical: "https://aceforth.com/blog/nuxt-netlify"
 ---
 

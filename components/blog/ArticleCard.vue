@@ -42,9 +42,9 @@
       </div>
       <div class="mt-6 flex items-center">
         <div class="flex text-sm leading-5 text-gray-500 dark:text-gray-300">
-          <time :datetime="attributes.published">{{
-            formatDate(attributes.published)
-          }}</time>
+          <time :datetime="attributes.published">
+            {{ formatDate(attributes.published) }}
+          </time>
         </div>
       </div>
     </div>
