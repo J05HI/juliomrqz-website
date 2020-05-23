@@ -26,5 +26,5 @@ export interface BlogPostContent extends BlogPostIndex {
 }
 
 export interface BlogPostParsed extends BlogPostContent {
-  text: string;
+  text: string
 }

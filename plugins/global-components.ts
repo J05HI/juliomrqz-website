@@ -6,6 +6,5 @@ import BlogImage from '~/components/blog/Image.vue'
 
 Vue.component('LazyHydrate', LazyHydrate)
 
-// TODO: for some reason, this module is not available on blog posts
-// Something wrong with @nuxt/components?
+// TODO: https://github.com/nuxt/content/issues/22
 Vue.component('BlogImage', BlogImage)

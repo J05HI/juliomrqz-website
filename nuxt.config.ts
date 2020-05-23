@@ -8,7 +8,7 @@ import { $content } from '@nuxt/content'
 
 import pkg from './package.json'
 import { ampify } from './utils/ampify'
-import { BlogPostParsed } from "./interfaces";
+import { BlogPostParsed } from './interfaces'
 
 const isProd = process.env.NODE_ENV === 'production'
 const gaTrackingID = process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-Y'
@@ -361,7 +361,7 @@ const config: NuxtConfiguration = {
 
   typescript: {
     typeCheck: {
-      eslint: false,
+      eslint: true,
     },
   },
 
@@ -391,7 +391,7 @@ const config: NuxtConfiguration = {
 
         document.readingTime = minutes
       }
-    }
+    },
   },
 
   amp: {
