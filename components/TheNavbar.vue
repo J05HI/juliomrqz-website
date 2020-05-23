@@ -175,17 +175,12 @@
 import Vue from 'vue'
 
 import '~/components/icons/menu'
-import DarkModeToggle from '~/components/DarkModeToggle.vue'
 import social from '~/helpers/social'
 
 const sidebarBaseClass =
   'absolute top-0 inset-x-0 p-2 origin-top-right z-10 md:hidden'
 
 export default Vue.extend({
-  components: {
-    DarkModeToggle,
-  },
-
   data() {
     return {
       isMenuOpen: this.$isAMP,

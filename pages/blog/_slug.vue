@@ -118,7 +118,7 @@
           />
         </div>
 
-        <ArticleContent itemprop="articleBody" />
+        <BlogArticleContent itemprop="articleBody" />
 
         <aside
           v-if="attributes.canonical"
@@ -146,7 +146,6 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import Url from 'url-parse'
 
-import ArticleContent from '~/components/blog/ArticleContent.vue'
 import SeoHead from '~/components/mixins/SeoHead'
 import FormatDate from '~/components/mixins/FormatDate'
 
@@ -157,9 +156,6 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: {
-    ArticleContent,
-  },
   mixins: [SeoHead, FormatDate],
   async asyncData({ app, params, $sentry }) {
     try {

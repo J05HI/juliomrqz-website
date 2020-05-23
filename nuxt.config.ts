@@ -33,13 +33,23 @@ const blogIndex = fs
 
 // TODO: remove when types get updated
 interface NuxtConfiguration extends Configuration {
-  components?: boolean
+  components?: any
   export: Configuration['generate']
 }
 
 const config: NuxtConfiguration = {
   mode: 'universal',
   target: 'static',
+
+  components: {
+    dirs: [
+      '~/components',
+      {
+        path: '~/components/blog/',
+        prefix: 'blog',
+      },
+    ],
+  },
 
   /*
    ** Env Variables
@@ -119,7 +129,7 @@ const config: NuxtConfiguration = {
   plugins: [
     '~/plugins/vue-svgicon',
     '~/plugins/vue-lazyload',
-    '~/plugins/globalComponents',
+    '~/plugins/vue-lazy-hydration',
   ],
 
   /*

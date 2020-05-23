@@ -30,13 +30,9 @@
 
 <script>
 import SeoHead from '~/components/mixins/SeoHead'
-import ProjectCard from '~/components/ProjectCard'
 import Projects from '~/helpers/projects'
 
 export default {
-  components: {
-    ProjectCard,
-  },
   mixins: [SeoHead],
   data() {
     const $t = this.$t.bind(this)
