@@ -31,8 +31,16 @@ const blogIndex = fs
   .readdirSync(path.resolve(__dirname, './content/blog/en'))
   .map((f) => f.slice(0, -3))
 
-const config: Configuration = {
+// TODO: remove when types get updated
+interface NuxtConfiguration extends Configuration {
+  components?: boolean
+  export: Configuration['generate']
+}
+
+const config: NuxtConfiguration = {
   mode: 'universal',
+  target: 'static',
+
   /*
    ** Env Variables
    */
@@ -211,9 +219,9 @@ const config: Configuration = {
   },
 
   /*
-   ** Generate Configuration
+   ** Export Configuration
    */
-  generate: {
+  export: {
     fallback: '404.html',
     routes() {
       const routes: string[] = ['/', '/about', '/projects', '/blog']
