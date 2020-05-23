@@ -250,19 +250,8 @@ export default Vue.extend({
       return result.hostname
     },
   },
-  async validate({ params, app, $content }) {
-    const { slug } = params
-
-    if (isAlphanumeric(slug.replace(/-/g, ''))) {
-      const posts: BlogPostContent[] = await $content('blog', app.i18n.locale)
-        .only(['slug'])
-        .fetch()
-      const slugs = posts.map((p) => p.slug)
-
-      return slugs.includes(slug)
-    } else {
-      return false
-    }
+  validate({ params }) {
+    return isAlphanumeric(params.slug.replace(/-/g, ''))
   },
 })
 </script>
