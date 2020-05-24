@@ -1,22 +1,21 @@
 ---
-published: '2013-09-12'
-created: '2017-09-18'
-modified: '2020-05-23T17:06:42Z'
-description: Probability, risk and uncertainty are concepts that must be understood not only in the geosciences, but in life.
 title: Bayes' Theorem and Natural Frequencies
-# image: blog/probabilities-and-uncertainty/cover.jpg
-# image_thumbnail: blog/probabilities-and-uncertainty/cover.thumbnail.jpg
-canonical: 'https://latraza.wordpress.com/2013/09/12/probabilities-and-uncertainty-bayes-theorem-and-natural-frequencies/'
+slug: probabilities-and-uncertainty
+description: Probability, risk and uncertainty are concepts that must be
+  understood not only in the geosciences, but in life.
+cover: blog/probabilities-and-uncertainty-cover.jpg
+created: 2017-09-18T00:00:00.000Z
+published: 2013-09-12T00:00:00.000Z
+canonical: https://latraza.wordpress.com/2013/09/12/probabilities-and-uncertainty-bayes-theorem-and-natural-frequencies/
 ---
-
 Probability, risk and uncertainty are concepts that must be understood not only in the geosciences, but in life. The way we process information in order to make decisions relies many times in the reduction of quantitative uncertainty. The more information we gather, the better the improvement of our prediction capabilities. This information is expressed as discrete probabilities or as probability density functions. In this post I intend to clarify through an example the concepts of joint and conditional probability and their relationship with Bayes Theorem. Two approaches will be presented in order to help you get the ideas: a probabilistic one and a frequentist one.
 
 Before we see the example let's review the definitions
 
 **Joint Probability (`$ P(X,Y) $` or `$ P(X∩Y) $`):** a statistical measure where the likelihood of two events occurring together and at the same point in time are calculated.
 
-| **Independent events** |   **Dependent events**   |
-| :--------------------: | :----------------------: |
+| **Independent events** | **Dependent events**     |
+| ---------------------- | ------------------------ |
 | `$ P(X∩Y)=P(X).P(Y) $` | `$ P(X∩Y)=P(X).P(Y/X) $` |
 
 **Conditional Probability (`$ P(X ❘ Y) $`):** probability that an event will occur, when another event is known to occur or have occurred.
@@ -33,11 +32,10 @@ We have to estimate the **probability** that a woman **with a positive mammogram
 
 Once stated the problem, we need information, don't we? Here it is in the form of discrete probabilities or probabilistic facts:
 
- - The probability that a woman in this group has breast cancer is 0.8% (yes, less than 1 %).
- - In a group of women with breast cancer, the mammogram positive detection has a certainty probability of 90% (ninety percent of the time, the mammogram gets it right).
- - In a group of healthy women, the probability of mammograms giving a positive detection is 7% (These are the false positives of the mammogram test, it's not perfect! Everything has its uncertainty).
- - That's it! If a woman gets a positive mammogram, what is the probability that she actually has breast cancer?.
-
+* The probability that a woman in this group has breast cancer is 0.8% (yes, less than 1 %).
+* In a group of women with breast cancer, the mammogram positive detection has a certainty probability of 90% (ninety percent of the time, the mammogram gets it right).
+* In a group of healthy women, the probability of mammograms giving a positive detection is 7% (These are the false positives of the mammogram test, it's not perfect! Everything has its uncertainty).
+* That's it! If a woman gets a positive mammogram, what is the probability that she actually has breast cancer?.
 
 ### The Bayesian Approach
 
@@ -51,10 +49,9 @@ First we have to write the given facts in this fancy “statistical” language 
 
 **Facts:**
 
-- `$ P(C+)=0.8% $` (Probability of having breast cancer in this low risk group).
-- `$ P(+m ❘ C+)=90% $` (Probability of positive mammogram, given that a woman has actually breast cancer).
-- `$ P(+m ❘ C-)=7% $` (Probability of positive mammogram, given that a woman is healthy–has no cancer).
-
+* `$ P(C+)=0.8% $` (Probability of having breast cancer in this low risk group).
+* `$ P(+m ❘ C+)=90% $` (Probability of positive mammogram, given that a woman has actually breast cancer).
+* `$ P(+m ❘ C-)=7% $` (Probability of positive mammogram, given that a woman is healthy–has no cancer).
 
 **Problem:**
 
@@ -70,7 +67,7 @@ What is awesome about Bayes´ theorem is how those two different questions relat
 
 I need a little visual help here. So I prepared a diagram showing the relationships above:
 
-<blog-image src="blog/probabilities-and-uncertainty/figure_1.jpg" width="1646" height="696" alt="Figure 1: Visual representation of Conditional and Joint probabilities"></blog-image>
+<blog-image src="blog/probabilities-and-uncertainty-figure_1.jpg" width="1646" height="696" alt="Figure 1: Visual representation of Conditional and Joint probabilities"></blog-image>
 
 The diagram is not to scale but illustrates pretty well the dependencies and meaning of the probabilities. **Conditional probabilities** depend on a previous event and **Joint probabilities** are like areas that measure the uncertainty of an outcome. The bigger the area, the more probable that outcome becomes.
 
@@ -92,21 +89,20 @@ Here we have to write the initial facts as frequencies or number of events in a 
 
 **Facts:**
 
-- 8 out of a 1000 women in the low risk group have breast cancer.
-- 9 out of 10 mammograms get it right with women with breast cancer.
-- In 7 women out of a 100 healthy ones, the mammogram gets it wrong (7 false positives in a 100 trials on healthy women).
+* 8 out of a 1000 women in the low risk group have breast cancer.
+* 9 out of 10 mammograms get it right with women with breast cancer.
+* In 7 women out of a 100 healthy ones, the mammogram gets it wrong (7 false positives in a 100 trials on healthy women).
 
 In a population of 1000 women in this low risk group, 8 will have breast cancer (Figure 2a). We need to know now how many of these healthy and non-healthy women will have a positive mammogram.  In the group of 8 women there is a 90% percent chance of getting a positive mammogram, so 7 out of those 8 will have a positive mammogram (`$ P(+m ❘ C+)=8*9/10 $` or around 7 women). In the remaining 992 healthy women, a 7 percent of them will have a positive mammogram, this mean (`$ P(+m ❘ C-)=992*7/100 $` or around 69). How many women will have a positive mammogram, either healthy or not? The answer is 7+69 or 76 (the union or sum of the joint probabilities or the blue circle in Figure 2b).
 
-<blog-image src="blog/probabilities-and-uncertainty/figure_2.jpg" width="487" height="257" alt="Figure 2: a) Representation of women with breast cancer to healthy ones. b) The blue circle represents the union of the joint probabilities of getting a positive mammogram in the populations of 'a'.s"></blog-image>
+<blog-image src="blog/probabilities-and-uncertainty-figure_2.jpg" width="487" height="257" alt="Figure 2: a) Representation of women with breast cancer to healthy ones. b) The blue circle represents the union of the joint probabilities of getting a positive mammogram in the populations of 'a'.s"></blog-image>
 
 If we want to know `$ P(+C ❘ +m) $`, we have to compare the number of women with cancer that actually get positively tested (`$ P(+C,+m) $` or `$ P(C+**∩**+m) $`) against the whole population of positive detections and false positives (the apparently crazy denominator of the Bayesian approach).
 
 `$ P(+C ❘ +m)=7/76 $` (Seven women out of seventy-six will have breast cancer and positive mammogram). That is 9.21% since we have rounded up to integers.
 
-
 ## Conclusion
 
 Both approaches do the same thing but depending on your way of thinking, one will be easier than the other. What is important to understand is the concept of uncertainty and how it surrounds everything, from medical tests like mammograms, HIV-tests and even DNA recognition to the weather and games of chance. I hope you have gotten a better insight into conditional and joint probability after going through the example.
 
-If you are interested in uncertainty I recommend the book of Gerd Gigerenzer _**“Reckoning with Risk: Learning to Live with Uncertainty”**_ and as an extra recommendation this one from Nate Silver _**“The Signal and the Noise: Why So Many Predictions Fail-but Some Don't”**_.  The article of Steven Strogatz can be read here: [http://opinionator.blogs.nytimes.com/2010/04/25/chances-are/](http://opinionator.blogs.nytimes.com/2010/04/25/chances-are/).
+If you are interested in uncertainty I recommend the book of Gerd Gigerenzer ***“Reckoning with Risk: Learning to Live with Uncertainty”*** and as an extra recommendation this one from Nate Silver ***“The Signal and the Noise: Why So Many Predictions Fail-but Some Don't”***.  The article of Steven Strogatz can be read here: <http://opinionator.blogs.nytimes.com/2010/04/25/chances-are/>.

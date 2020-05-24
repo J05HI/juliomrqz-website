@@ -6,9 +6,9 @@
   >
     <LazyHydrate ssr-only>
       <div>
-        <meta itemprop="dateCreated" :content="post.created" />
-        <meta itemprop="datePublished" :content="post.published" />
-        <meta itemprop="dateModified" :content="post.modified" />
+        <meta itemprop="dateCreated" :content="head.created" />
+        <meta itemprop="datePublished" :content="head.published" />
+        <meta itemprop="dateModified" :content="head.modified" />
         <meta itemprop="description" :content="post.description" />
         <meta itemprop="timeRequired" :content="`PT${post.readingTime}M`" />
         <meta itemprop="inLanguage" :content="$i18n.locale" />
@@ -27,7 +27,7 @@
         >
           <meta
             itemprop="url"
-            :content="require(`~/assets/images/blog/${post.slug}/cover.jpg`)"
+            :content="require(`~/assets/images/content/${post.cover}`)"
           />
           <meta itemprop="width" content="1200px" />
           <meta itemprop="height" content="630px" />
@@ -107,7 +107,7 @@
         <div class="-mx-6 mb-8 md:mx-0">
           <ImageResponsive
             :source="
-              require(`~/assets/images/blog/${post.slug}/cover.jpg?resize&sizes[]=800&sizes[]=1200`)
+              require(`~/assets/images/content/${post.cover}?resize&sizes[]=800&sizes[]=1200`)
             "
             :width="1200 / 1.5"
             :height="630 / 1.5"
@@ -177,7 +177,7 @@ export default Vue.extend({
         description,
         canonical,
         created,
-        modified,
+        updatedAt,
         published,
         // wordCount,
         noindex,
@@ -186,7 +186,7 @@ export default Vue.extend({
       const postUrl = app.localePath({ name: 'blog-slug', params: { slug } })
       const postAbsoluteUrl = `${process.env.baseHost}${postUrl}`
 
-      const image = require(`~/assets/images/blog/${slug}/cover.jpg`)
+      const image = require(`~/assets/images/content/${post.cover}`)
 
       return {
         post,
@@ -195,9 +195,9 @@ export default Vue.extend({
           title,
           description,
           canonical,
-          created,
-          modified,
-          published,
+          created: new Date(created).toISOString(),
+          modified: new Date(updatedAt).toISOString(),
+          published: new Date(published).toISOString(),
           noindex,
           extraScripts: [
             {

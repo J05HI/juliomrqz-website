@@ -386,3 +386,5 @@ source
 
 .now
 .vercel
+
+static/admin/config.yml

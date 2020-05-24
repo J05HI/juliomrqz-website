@@ -201,6 +201,16 @@ const config: NuxtConfiguration = {
         },
       },
     },
+    templates: [
+      {
+        src: './templates/netlify-cms-config.yml.tpl',
+        dst: '../static/admin/config.yml',
+        options: {
+          isProd,
+          baseURL,
+        },
+      },
+    ],
   },
 
   /*
@@ -329,15 +339,15 @@ const config: NuxtConfiguration = {
       try {
         const blogIndex: {
           slug: string
-          modified: string
-        }[] = await $content('blog', 'en').only(['slug', 'modified']).fetch()
+          updatedAt: string
+        }[] = await $content('blog', 'en').only(['slug', 'updatedAt']).fetch()
 
         blogIndex.map((slug) => {
           routesEn.push({
             url: `/blog/${slug.slug}`,
             changefreq: EnumChangefreq.DAILY,
             priority: 0.7,
-            lastmodISO: new Date(slug.modified).toISOString(),
+            lastmodISO: new Date(slug.updatedAt).toISOString(),
             ampLink: `${baseURL}/amp/blog/${slug.slug}`,
             links: getI18nLinks(`/blog/${slug.slug}`),
           })
@@ -430,6 +440,11 @@ const config: NuxtConfiguration = {
       },
     },
   },
+
+  serverMiddleware: [
+    { path: '/api/cms/auth', handler: '~/api/_dev/cms/auth.js' },
+    { path: '/api/cms/complete', handler: '~/api/_dev/cms/complete.js' },
+  ],
 }
 
 export default config

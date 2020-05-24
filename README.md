@@ -24,6 +24,7 @@ For a user perspective, this website is simple and fast enough. But, nowadays cr
 - 🏃 [Web Vitals][web-vitals]
 - 🛡 [Content Security Policy (CSP)][csp]
 - 🐛 Errors monitoring through [Sentry][sentry]
+- ⌨️ A Blog Editor powered by [Netlify CMS][netlify-cms] with a custom [Github OAuth App][github-oauth] and write-access to the Github Repository
 
 
 ## Build Setup
@@ -63,3 +64,5 @@ $ yarn generate
 [web-vitals]: https://web.dev/vitals/
 [csp]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 [sentry]: https://sentry.io/welcome/
+[netlify-cms]: https://www.netlifycms.org/
+[github-oauth]: https://developer.github.com/apps/building-oauth-apps/

@@ -1,16 +1,15 @@
 ---
-published: '2013-09-08'
-created: '2017-09-18'
-modified: '2020-05-23T17:06:42Z'
-description: >-
-  A través del tiempo, se han utilizado métodos determinísticos para la
-  predicción de las propiedades del yacimiento que se utilizan para convertir
-  los datos sísmicos en la propiedad del yacimiento deseado.
 title: No linealidad en el análisis de múltiples atributos
-headline: >-
-  Se han utilizado métodos determinísticos para la predicción de las propiedades
-  del yacimiento a partir de datos sísmicos.
-canonical: 'https://latraza.wordpress.com/2013/08/09/non-linearity-in-multi-attribute-analysis/'
+slug: non-linearity-in-multi-attribute-analysis
+description: A través del tiempo, se han utilizado métodos determinísticos para
+  la predicción de las propiedades del yacimiento que se utilizan para convertir
+  los datos sísmicos en la propiedad del yacimiento deseado.
+cover: blog/non-linearity-in-multi-attribute-analysis-cover.jpg
+created: 2017-09-18T00:00:00.000Z
+published: 2013-09-08T00:00:00.000Z
+canonical: https://latraza.wordpress.com/2013/08/09/non-linearity-in-multi-attribute-analysis/
+headline: Se han utilizado métodos determinísticos para la predicción de las
+  propiedades del yacimiento a partir de datos sísmicos.
 ---
 
 

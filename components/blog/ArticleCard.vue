@@ -8,7 +8,7 @@
       >
         <ImageResponsive
           :source="
-            require(`~/assets/images/blog/${attributes.slug}/cover.jpg?resize&sizes[]=600&sizes[]=900&sizes[]=1200`)
+            require(`~/assets/images/content/${attributes.cover}?resize&sizes[]=600&sizes[]=900&sizes[]=1200`)
           "
           :width="1200 / 2"
           :height="630 / 2"

@@ -1,19 +1,21 @@
 ---
-title: "Mapset, a new, innovative and dynamic tool"
-description: "Today, we're happy to Introduce Mapset. A new, innovative and dynamic tool designed for managing screens in different mainframe coding languages. This tool means time savings due to its low execution time."
-published: "2018-06-05T15:53:07Z"
-created: "2018-06-05T15:53:07Z"
-modified: "2020-05-23T17:06:42Z"
-canonical: "https://aceforth.com/blog/mapset-new-innovative-dynamic-tool"
+title: Mapset, a new, innovative and dynamic tool
+slug: mapset
+description: Today, we're happy to Introduce Mapset. A new, innovative and
+  dynamic tool designed for managing screens in different mainframe coding
+  languages. This tool means time savings due to its low execution time.
+cover: blog/mapset-cover.jpg
+created: 2018-06-05T15:53:07.000Z
+published: 2018-06-05T15:53:07.000Z
+canonical: https://aceforth.com/blog/mapset-new-innovative-dynamic-tool
 ---
-
 Today, we're happy to Introduce Mapset. A new, innovative and dynamic tool designed for managing screens in different mainframe coding languages. This tool means time savings due to its low execution time. Mapset allows designing BMS files without the need to worry about errors thanks to the validation system, this easily identifies errors quickly and easily.
 
 You can draw through a Drag & Drop interface, generate a new BMS from scratch or any other existing BMS and generate HTML code from BMS files in seconds.
 
 When we started creating Mapset, we focused on three things: Innovation, Efficiency, and Convenience. Mapset became 15x faster than conventional methods or any other tool available. It's inexpensive, very easy to use and users don't need to be a COBOL or CICS expert.
 
-<blog-image src="blog/mapset/design-create-advanced-editor.jpg" width="1024" height="535" alt="Mapset - Advanced Editor"></blog-image>
+<blog-image src="blog/mapset-design-create-advanced-editor.jpg" width="1024" height="535" alt="Mapset - Advanced Editor"></blog-image>
 
 ## Advantages
 
@@ -39,7 +41,7 @@ With Mapset, we automatically generate HTML files from existing BMS by using the
 
 Mapset defines its essence in three fundamental pillars: Design, Create and Convert.
 
-<blog-image src="blog/mapset/design-create-convert.jpg" width="1199" height="628" alt="Mapset - How It Works"></blog-image>
+<blog-image src="blog/mapset-design-create-convert.jpg" width="1199" height="628" alt="Mapset - How It Works"></blog-image>
 
 ### Design
 
@@ -81,6 +83,6 @@ Analytics reports help you to clearly understand how your team members behave so
 
 Mapset is 15x faster than conventional methods or any other tool available. It is very easy to use without being a COBOL or CICS expert.
 
----
+- - -
 
-We're very proud with this product, and we're really sure that this tool could be a game-changing. **Don't be afraid and try it at** [https://mapset.app](https://mapset.app).
+We're very proud with this product, and we're really sure that this tool could be a game-changing. **Don't be afraid and try it at** <https://mapset.app>.

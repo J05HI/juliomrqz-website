@@ -4,13 +4,14 @@ export interface BlogPostIndex {
   slug: string
   title: string
   description: string
-  published: string
+  published: Date
 }
 
 export interface BlogPostContent extends BlogPostIndex {
-  created: string
-  modified: string
+  created: Date
   canonical?: string
+  slug: string
+  cover: string
   noindex?: boolean
 
   // @nuxt/content
@@ -19,7 +20,7 @@ export interface BlogPostContent extends BlogPostIndex {
   dir: string
   path: string
   extension: string
-  updatedAt: string
+  updatedAt: Date
 
   // extra
   readingTime?: number

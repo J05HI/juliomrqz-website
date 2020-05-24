@@ -36,7 +36,7 @@ export default Vue.extend({
   },
   computed: {
     image() {
-      return require(`~/assets/images/${this.src}`)
+      return require(`~/assets/images/content/${this.src}`)
     },
   },
 })

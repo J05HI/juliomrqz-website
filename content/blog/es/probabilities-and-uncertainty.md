@@ -1,17 +1,15 @@
 ---
-published: '2013-09-12'
-created: '2017-09-18'
-modified: '2020-05-23T17:06:42Z'
-description: >-
-  Probabilidad, riesgo e incertidumbre son conceptos que deben entenderse no
-  sólo en las geociencias, sino en la vida.
 title: Teorema de Bayes y Frecuencias Naturales
-headline: >-
-  Probabilidad, riesgo e incertidumbre son conceptos que deben ser entendidos en
-  la vida.
-canonical: 'https://latraza.wordpress.com/2013/09/12/probabilities-and-uncertainty-bayes-theorem-and-natural-frequencies/'
+slug: probabilities-and-uncertainty
+description: Probabilidad, riesgo e incertidumbre son conceptos que deben
+  entenderse no sólo en las geociencias, sino en la vida.
+cover: blog/probabilities-and-uncertainty-cover.jpg
+created: 2017-09-18T00:00:00.000Z
+published: 2013-09-12T00:00:00.000Z
+canonical: https://latraza.wordpress.com/2013/09/12/probabilities-and-uncertainty-bayes-theorem-and-natural-frequencies/
+headline: Probabilidad, riesgo e incertidumbre son conceptos que deben ser
+  entendidos en la vida.
 ---
-
 Probabilidad, riesgo e incertidumbre son conceptos que deben entenderse no sólo en las geociencias, sino en la vida. La forma en que procesamos la información para tomar decisiones depende muchas veces de la reducción de la incertidumbre cuantitativa. Cuanta más información recopilemos, mejoraran nuestras capacidades para predecir. Esta información es expresada como probabilidades discretas o funciones de densidad de probabilidad. En este post pretendo aclarar a través de un ejemplo de los conceptos de probabilidad conjunta y condicional y su relación con el Teorema de Bayes. Se presentarán dos enfoques para ayudarle a obtener las ideas: una probabilística y una frecuente.
 
 Antes de ver los ejemplos, veamos las definiciones.
@@ -19,8 +17,8 @@ Antes de ver los ejemplos, veamos las definiciones.
 **Probabilidad conjunta (`$ P(X,Y) $` o `$ P(X∩Y) $`):** una medida estadística donde se calcula la probabilidad de que se produzcan dos eventos que ocurren juntos y en el mismo punto en el tiempo.
 
 | **Eventos independientes** | **Eventos dependientes** |
-| :------------------------: | :----------------------: |
-|   `$ P(X∩Y)=P(X).P(Y) $`   | `$ P(X∩Y)=P(X).P(Y/X) $` |
+| -------------------------- | ------------------------ |
+| `$ P(X∩Y)=P(X).P(Y) $`     | `$ P(X∩Y)=P(X).P(Y/X) $` |
 
 **Probabilidad condicional (`$ P(X ❘ Y) $`):** probabilidad de que ocurra un evento, cuando se sabe que ocurre o ha ocurrido otro evento.
 
@@ -36,10 +34,10 @@ Tenemos que estimar la **probabilidad** de que una mujer **con una mamografía p
 
 Una vez declarado el problema, necesitamos información, ¿no? Aquí está en forma de probabilidades discretas o hechos probabilísticos:
 
- - La probabilidad de que una mujer en este grupo tenga cáncer de mama es del 0,8% (sí, menos del 1%).
- - En un grupo de mujeres con cáncer de mama, la detección positiva de la mamografía tiene una probabilidad de certeza del 90% (noventa por ciento del tiempo, el mamograma lo hace bien).
- - En un grupo de mujeres sanas, la probabilidad de que las mamografías den una detección positiva es del 7% (Estos son los falsos positivos de la prueba de mamografía, no es perfecta, todo tiene su incertidumbre).
- - ¡Eso es todo! Si una mujer obtiene una mamografía positiva, ¿cuál es la probabilidad de que realmente tenga cáncer de mama?.
+* La probabilidad de que una mujer en este grupo tenga cáncer de mama es del 0,8% (sí, menos del 1%).
+* En un grupo de mujeres con cáncer de mama, la detección positiva de la mamografía tiene una probabilidad de certeza del 90% (noventa por ciento del tiempo, el mamograma lo hace bien).
+* En un grupo de mujeres sanas, la probabilidad de que las mamografías den una detección positiva es del 7% (Estos son los falsos positivos de la prueba de mamografía, no es perfecta, todo tiene su incertidumbre).
+* ¡Eso es todo! Si una mujer obtiene una mamografía positiva, ¿cuál es la probabilidad de que realmente tenga cáncer de mama?.
 
 ### El Enfoque Bayesiano
 
@@ -53,9 +51,9 @@ Primero tenemos que escribir los hechos dados en este sofisticado lenguaje "esta
 
 **Hechos:**
 
-- `$ P(C+)=0.8% $` (Probabilidad de tener cáncer de mama en este grupo de bajo riesgo).
-- `$ P(+m ❘ C+)=90% $` (Probabilidad de mamografía positiva, dado que una mujer tiene realmente cáncer de mama).
-- `$ P(+m ❘ C-)=7% $` (Probabilidad de mamografía positiva, dado que una mujer es sana/no tiene cáncer).
+* `$ P(C+)=0.8% $` (Probabilidad de tener cáncer de mama en este grupo de bajo riesgo).
+* `$ P(+m ❘ C+)=90% $` (Probabilidad de mamografía positiva, dado que una mujer tiene realmente cáncer de mama).
+* `$ P(+m ❘ C-)=7% $` (Probabilidad de mamografía positiva, dado que una mujer es sana/no tiene cáncer).
 
 **Problema:**
 
@@ -71,7 +69,7 @@ Lo que es impresionante sobre el teorema de Bayes es cómo se relacionan entre s
 
 Necesito un poco de ayuda visual aquí. Así que preparé un diagrama que muestra las relaciones anteriores:
 
-<blog-image src="blog/probabilities-and-uncertainty/figure_1.jpg" width="1646" height="696" alt="Figura 1: Representación visual de probabilidades condicionales y conjuntas"></blog-image>
+<blog-image src="blog/probabilities-and-uncertainty-figure_1.jpg" width="1646" height="696" alt="Figura 1: Representación visual de probabilidades condicionales y conjuntas"></blog-image>
 
 El diagrama no está a escala, pero ilustra muy bien las dependencias y significado de las probabilidades. **Las probabilidades condicionales** dependen de un evento previo y **Las probabilidades conjuntas** son como las áreas que miden la incertidumbre de un resultado. Cuanto mayor es el área, más probable es que el resultado se convierte.
 
@@ -93,13 +91,13 @@ Aquí tenemos que escribir los hechos iniciales como frecuencias o número de ev
 
 **Hechos:**
 
-- 8 de cada 1000 mujeres del grupo de bajo riesgo tienen cáncer de mama.
-- 9 de cada 10 mamografías lo hacen bien con las mujeres con cáncer de mama.
-- En 7 mujeres de 100 sanas, la mamografía se equivoca (7 falsos positivos en 100 ensayos en mujeres sanas).
+* 8 de cada 1000 mujeres del grupo de bajo riesgo tienen cáncer de mama.
+* 9 de cada 10 mamografías lo hacen bien con las mujeres con cáncer de mama.
+* En 7 mujeres de 100 sanas, la mamografía se equivoca (7 falsos positivos en 100 ensayos en mujeres sanas).
 
 En una población de 1000 mujeres en este grupo de bajo riesgo, 8 tendrán cáncer de mama (Figura 2a). Necesitamos saber ahora cuántas de estas mujeres sanas y no sanas tendrán una mamografía positiva. En el grupo de 8 mujeres hay un 90% de probabilidad de obtener una mamografía positiva, de modo que 7 de esas 8 tendrán una mamografía positiva (`$ P(+m ❘ C+)=8*9/10 $` o alrededor 7 mujeres). En el resto de 992 mujeres sanas, un 7 por ciento de ellas tendrán una mamografía positiva, esto significa (`$ P(+m ❘ C-)=992*7/100 $` o alrededor de 69). ¿Cuántas mujeres tendrán una mamografía positiva, sana o no? La respuesta es 7 + 69 o 76 (la unión o la suma de las probabilidades conjuntas o el círculo azul en la figura 2b).
 
-<blog-image src="blog/probabilities-and-uncertainty/figure_2.jpg" width="487" height="257" alt="Figure 2: a) Representation of women with breast cancer to healthy ones. b) The blue circle represents the union of the joint probabilities of getting a positive mammogram in the populations of 'a'.s"/></blog-image>
+<blog-image src="blog/probabilities-and-uncertainty-figure_2.jpg" width="487" height="257" alt="Figure 2: a) Representation of women with breast cancer to healthy ones. b) The blue circle represents the union of the joint probabilities of getting a positive mammogram in the populations of 'a'.s"/></blog-image>
 
 Si queremos saber `$ P(+C ❘ +m) $`, tenemos que comparar el número de mujeres con cáncer que realmente se someten a pruebas positivas (`$ P(+C,+m) $` or `$ P(C+**∩**+m) $`) contra toda la población de detecciones positivas y falsos positivos (el denominador aparentemente loco del enfoque bayesiano).
 
@@ -109,5 +107,4 @@ Si queremos saber `$ P(+C ❘ +m) $`, tenemos que comparar el número de mujeres
 
 Ambos enfoques hacen lo mismo, pero dependiendo de su forma de pensar, uno será más fácil que el otro. Lo que es importante entender es el concepto de incertidumbre y cómo lo rodea todo, desde pruebas médicas como mamografías, pruebas de VIH e incluso el reconocimiento de ADN al clima y los juegos de azar. Espero que hayas obtenido una mejor comprensión de la probabilidad condicional y conjunta después de pasar por el ejemplo.
 
-Si estás interesado en la incertidumbre, recomiendo el libro de Gerd Gigerenzer _**“Reckoning with Risk: Learning to Live with Uncertainty”**_ y como una recomendación adicional este de Nate Silver _**“The Signal and the Noise: Why So Many Predictions Fail-but Some Don't”**_. El artículo de Steven Strogatz se puede leer aquí: [http://opinionator.blogs.nytimes.com/2010/04/25/chances-are/](http://opinionator.blogs.nytimes.com/2010/04/25/chances-are/).
-
+Si estás interesado en la incertidumbre, recomiendo el libro de Gerd Gigerenzer ***“Reckoning with Risk: Learning to Live with Uncertainty”*** y como una recomendación adicional este de Nate Silver ***“The Signal and the Noise: Why So Many Predictions Fail-but Some Don't”***. El artículo de Steven Strogatz se puede leer aquí: <http://opinionator.blogs.nytimes.com/2010/04/25/chances-are/>.

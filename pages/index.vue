@@ -181,7 +181,7 @@ export default {
 
     try {
       posts = await $content('blog', app.i18n.locale)
-        .only(['slug', 'title', 'description', 'published'])
+        .only(['slug', 'title', 'description', 'published', 'cover'])
         .sortBy('created', 'desc')
         .limit(3)
         .fetch()
