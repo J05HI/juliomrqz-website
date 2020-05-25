@@ -14,8 +14,7 @@
     "svg": "vsvg -s ./assets/svg/src -t ./components/icons --ext ts --es6",
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
     "lint:fix": "yarn lint --fix",
-    "test": "jest",
-    "now-build": "yarn generate"
+    "test": "jest"
   },
   "dependencies": {
     "@nuxt/content": "1.0.0",
