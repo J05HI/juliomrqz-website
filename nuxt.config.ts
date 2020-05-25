@@ -1,15 +1,14 @@
-import path from 'path'
-import * as fs from 'fs-extra'
 import { Configuration } from '@nuxt/types'
 import { ISitemapItemOptionsLoose, EnumChangefreq, ILinkItem } from 'sitemap'
-// @ts-ignore
-import Mode from 'frontmatter-markdown-loader/mode'
+import readingTime from 'reading-time'
 // @ts-ignore
 import colors from '@tailwindcss/ui/colors'
+// @ts-ignore
+import { $content } from '@nuxt/content'
 
 import pkg from './package.json'
-import { renderMarkdown } from './utils/markdown'
 import { ampify } from './utils/ampify'
+import { BlogPostParsed } from './interfaces'
 
 const isProd = process.env.NODE_ENV === 'production'
 const gaTrackingID = process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-Y'
@@ -28,13 +27,31 @@ const environment = isProd
   ? `${isPreview ? 'preview' : 'production'}`
   : 'development'
 
-const blogIndex = fs
-  .readdirSync(path.resolve(__dirname, './content/blog/en'))
-  .map((f) => f.slice(0, -3))
+// TODO: remove when types get updated
+interface NuxtConfiguration extends Configuration {
+  components?: any
+  export: Configuration['generate']
 
-const config: Configuration = {
+  hooks: Configuration['hooks'] & {
+    'content:file:beforeInsert'?(document: BlogPostParsed): void
+  }
+}
+
+const config: NuxtConfiguration = {
   mode: 'universal',
   target: 'static',
+
+  components: {
+    dirs: [
+      { path: '~/components', pattern: '*.vue' },
+      {
+        path: '~/components/blog/',
+        prefix: 'blog',
+        pattern: '*.vue',
+      },
+    ],
+  },
+
   /*
    ** Env Variables
    */
@@ -102,7 +119,6 @@ const config: Configuration = {
    */
   css: [
     'github-markdown-css/github-markdown.css',
-    '~/assets/css/prism-theme.css',
     '~/assets/css/svg-icon.css',
     '~/assets/inter/inter.css',
     '~/assets/css/main.css',
@@ -114,7 +130,7 @@ const config: Configuration = {
   plugins: [
     '~/plugins/vue-svgicon',
     '~/plugins/vue-lazyload',
-    '~/plugins/globalComponents',
+    '~/plugins/global-components',
   ],
 
   /*
@@ -144,6 +160,7 @@ const config: Configuration = {
     '@nuxtjs/sitemap',
     // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
+    '@nuxt/content',
     '@nuxtjs/amp',
     [
       'nuxt-vitals',
@@ -154,7 +171,6 @@ const config: Configuration = {
     ],
     ['vue-scrollto/nuxt', { offset: -40 }],
     '@nuxtjs/sentry',
-    '~/modules/blog',
   ],
 
   /*
@@ -175,23 +191,6 @@ const config: Configuration = {
    ** Build configuration
    */
   build: {
-    extend(config) {
-      config.module &&
-        config.module.rules.push({
-          test: /\.md$/,
-          loader: 'frontmatter-markdown-loader',
-          include: path.resolve(__dirname, 'content'),
-          options: {
-            mode: [Mode.META, Mode.VUE_COMPONENT],
-            markdown: (body: string) => {
-              return renderMarkdown(body)
-            },
-            vue: {
-              root: 'article-content',
-            },
-          },
-        })
-    },
     postcss: {
       plugins: {
         'postcss-nested': {},
@@ -204,6 +203,16 @@ const config: Configuration = {
         },
       },
     },
+    templates: [
+      {
+        src: './templates/netlify-cms-config.yml.tpl',
+        dst: '../static/admin/config.yml',
+        options: {
+          isProd,
+          baseURL,
+        },
+      },
+    ],
   },
 
   /*
@@ -214,13 +223,14 @@ const config: Configuration = {
   },
 
   /*
-   ** Generate Configuration
+   ** Export Configuration
    */
-  generate: {
+  export: {
     fallback: '404.html',
-    routes() {
+    async routes() {
       const routes: string[] = ['/', '/about', '/projects', '/blog']
 
+      // other routes
       routes.forEach((route) => {
         const postFix = route === '/' ? '' : route
 
@@ -230,12 +240,14 @@ const config: Configuration = {
         routes.push(`/amp/es${postFix}`)
       })
 
-      blogIndex.forEach((route) => {
-        routes.push(`/blog/${route}`)
-        routes.push(`/amp/blog/${route}`)
+      // blog routes
+      const blogIndex: { slug: string }[] = await $content('blog', 'en')
+        .only(['slug'])
+        .fetch()
 
-        routes.push(`/es/blog/${route}`)
-        routes.push(`/amp/es/blog/${route}`)
+      blogIndex.forEach((route) => {
+        routes.push(`/amp/blog/${route.slug}`)
+        routes.push(`/amp/es/blog/${route.slug}`)
       })
 
       return routes
@@ -304,7 +316,7 @@ const config: Configuration = {
       priority: 0.7,
       lastmod: new Date(),
     },
-    routes() {
+    async routes() {
       const websitePages = ['', 'about', 'projects', 'blog']
       const routesEn: ISitemapItemOptionsLoose[] = []
       const routesEs: ISitemapItemOptionsLoose[] = []
@@ -327,13 +339,19 @@ const config: Configuration = {
 
       // Generate from Blog Posts
       try {
+        const blogIndex: {
+          slug: string
+          updatedAt: string
+        }[] = await $content('blog', 'en').only(['slug', 'updatedAt']).fetch()
+
         blogIndex.map((slug) => {
           routesEn.push({
-            url: `/blog/${slug}`,
+            url: `/blog/${slug.slug}`,
             changefreq: EnumChangefreq.DAILY,
             priority: 0.7,
-            ampLink: `${baseURL}/amp/blog/${slug}`,
-            links: getI18nLinks(`blog/${slug}`),
+            lastmodISO: new Date(slug.updatedAt).toISOString(),
+            ampLink: `${baseURL}/amp/blog/${slug.slug}`,
+            links: getI18nLinks(`/blog/${slug.slug}`),
           })
         })
       } catch (error) {
@@ -379,6 +397,13 @@ const config: Configuration = {
         }
       },
     },
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const { minutes } = readingTime(document.text)
+
+        document.readingTime = minutes
+      }
+    },
   },
 
   amp: {
@@ -409,6 +434,19 @@ const config: Configuration = {
       },
     },
   },
+
+  content: {
+    markdown: {
+      prism: {
+        theme: '~/assets/css/prism-theme.css',
+      },
+    },
+  },
+
+  serverMiddleware: [
+    { path: '/api/cms/auth', handler: '~/api/_dev/cms/auth.js' },
+    { path: '/api/cms/complete', handler: '~/api/_dev/cms/complete.js' },
+  ],
 }
 
 export default config

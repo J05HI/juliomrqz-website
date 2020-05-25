@@ -9,9 +9,9 @@
             >
               {{ $t('subTitle') }}
               <br class="xl:hidden" />
-              <span class="text-gray-900 dark:text-gray-100">{{
-                $t('title')
-              }}</span>
+              <span class="text-gray-900 dark:text-gray-100">
+                {{ $t('title') }}
+              </span>
             </h1>
             <p
               class="mt-3 max-w-md mx-auto text-base font-medium dark:text-gray-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
@@ -108,7 +108,8 @@
             <div
               class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none"
             >
-              <ArticleCard
+              <!-- {{posts}} -->
+              <BlogArticleCard
                 v-for="post in posts"
                 :key="post.slug"
                 :attributes="post"
@@ -170,22 +171,20 @@
 
 <script>
 import SeoHead from '~/components/mixins/SeoHead'
-import ArticleCard from '~/components/blog/ArticleCard'
-import ProjectCard from '~/components/ProjectCard'
 import projects from '~/helpers/projects'
 
 export default {
-  components: {
-    ArticleCard,
-    ProjectCard,
-  },
   mixins: [SeoHead],
-  async asyncData({ app, $sentry }) {
+  async asyncData({ app, $sentry, $content }) {
     const title = `${app.i18n.t('subTitle')} ${app.i18n.t('title')}`
     let posts = []
 
     try {
-      posts = await app.$blog.getArticles(app.i18n.locale)
+      posts = await $content('blog', app.i18n.locale)
+        .only(['slug', 'title', 'description', 'published', 'cover'])
+        .sortBy('created', 'desc')
+        .limit(3)
+        .fetch()
     } catch (error) {
       $sentry.captureException(error)
     }

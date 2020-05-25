@@ -1,13 +1,13 @@
 ---
-slug: "nuxt-optimized-images"
-title: "Una nueva forma de optimizar las imágenes en tus proyectos Nuxt"
-description: "Creamos un nuevo módulo que permite optimizar automáticamente las imágenes utilizadas en los proyectos Nuxt.js (JPEG, PNG, SVG, WebP y GIF)."
-published: "2019-03-15T18:00:50Z"
-created: "2019-03-15T18:00:50Z"
-modified: "2020-05-12T15:32:32Z"
-canonical: "https://aceforth.com/es/blog/nuxt-optimized-images"
+title: Una nueva forma de optimizar las imágenes en tus proyectos Nuxt
+slug: nuxt-optimized-images
+description: Creamos un nuevo módulo que permite optimizar automáticamente las
+  imágenes utilizadas en los proyectos Nuxt.js (JPEG, PNG, SVG, WebP y GIF).
+cover: blog/nuxt-optimized-images-cover.jpg
+created: 2019-03-15T18:00:50.000Z
+published: 2019-03-15T18:00:50.000Z
+canonical: https://aceforth.com/es/blog/nuxt-optimized-images
 ---
-
 Estamos muy emocionados de presentarte otro módulo que hemos creado para el ecosistema de Nuxt.js: **Nuxt Optimized Images**, una nueva forma de optimizar automáticamente las imágenes utilizadas en tus proyectos (JPEG, PNG, SVG, WebP y GIF).
 
 Ahora puedes reducir fácilmente el tamaño de tus imágenes hasta en un 60%, pero esto no es lo único que se puede hacer:
@@ -25,13 +25,13 @@ Ahora puedes reducir fácilmente el tamaño de tus imágenes hasta en un 60%, pe
 
 Empezar es sencillo, sólo instala el módulo de la siguiente manera:
 
-```bash 
+```shell
 npm install @aceforth/nuxt-optimized-images # o yarn add @aceforth/nuxt-optimized-images
 ```
 
 Añade `@aceforth/nuxt-optimized-images` a la sección de modulos de `nuxt.config.js`:
 
-```js
+```javascript
 {
   modules: [
     '@aceforth/nuxt-optimized-images',
@@ -42,12 +42,11 @@ Añade `@aceforth/nuxt-optimized-images` a la sección de modulos de `nuxt.confi
 Puedes importar o requerir tus imágenes directamente en tus componentes Vue:
 
 ```html
-
 <template>
   <picture>
-    <source :srcset="require('~/assets/my-image.jpg?webp')" type="image/webp" />
-    <source :srcset="require('~/assets/my-image.jpg')" type="image/jpeg" />
-    <img :src="require('~/assets/my-image.jpg')" />
+    <source :srcset="require('my-image.jpg?webp')" type="image/webp" />
+    <source :srcset="require('my-image.jpg')" type="image/jpeg" />
+    <img :src="require('my-image.jpg')" />
   </picture>
 </template>
 
@@ -60,34 +59,22 @@ Puedes importar o requerir tus imágenes directamente en tus componentes Vue:
   <img src="/_nuxt/images/5216de42.jpg" />
 </picture>
 -->
-
 ```
 
-Hay varias opciones adicionales que puedes especificar como parámetros de consulta cuando importas las imágenes, sólo tienes que seguir [la documentación][nuxt-optimized-images-docs-usage] para obtener más información.
-
+Hay varias opciones adicionales que puedes especificar como parámetros de consulta cuando importas las imágenes, sólo tienes que seguir [la documentación](https://aceforth.com/es/docs/nuxt-optimized-images/usage/) para obtener más información.
 
 ## Contribuye a Nuxt Optimized Images
 
-**Nuxt Optimized Images** es un proyecto completamente abierto, cualquier contribución es bienvenida, incluso dándonos una [estrella en GitHub ★][nuxt-optimized-images-github] o corriendo la voz 🤓.
+**Nuxt Optimized Images** es un proyecto completamente abierto, cualquier contribución es bienvenida, incluso dándonos una [estrella en GitHub ★](https://github.com/aceforth/nuxt-optimized-images) o corriendo la voz 🤓.
 
 ## Documentation & Support
 
-Si deseas más detalles sobre cómo configurar y utilizar este módulo, la **documentación completa** está disponible en [https://aceforth.com/es/docs/nuxt-optimized-images/][nuxt-optimized-images-docs].
+Si deseas más detalles sobre cómo configurar y utilizar este módulo, la **documentación completa** está disponible en <https://aceforth.com/es/docs/nuxt-optimized-images/>.
 
-Para **Informes de fallos** or **Solicitudes de Características**, utiliza la [sección de Issues][nuxt-optimized-images-issues]. Pero, si tienes **preguntas**, por favor ve al [Chat de la Comunidad][spectrum-chat].
+Para **Informes de fallos** or **Solicitudes de Características**, utiliza la [sección de Issues](https://github.com/aceforth/nuxt-optimized-images/issues). Pero, si tienes **preguntas**, por favor ve al [Chat de la Comunidad](https://spectrum.chat/bazzite/login?r=https://spectrum.chat/bazzite/open-source).
 
-También puedes **seguirnos** [en Twitter][twitter] para futuras actualizaciones y temas valiosos.
+También puedes **seguirnos** [en Twitter](https://twitter.com/AceforthHQ) para futuras actualizaciones y temas valiosos.
 
 ## Soporte Profesional
 
-Si necesitas Asistencia Profesional para tu(s) proyecto(s), ponte en contacto con nosotros en [https://aceforth.com/contact][contact-page].
-
-
-
-[nuxt-optimized-images-docs]: https://aceforth.com/es/docs/nuxt-optimized-images/
-[nuxt-optimized-images-docs-usage]: https://aceforth.com/es/docs/nuxt-optimized-images/usage/
-[nuxt-optimized-images-issues]: https://github.com/aceforth/nuxt-optimized-images/issues
-[nuxt-optimized-images-github]: https://github.com/aceforth/nuxt-optimized-images
-[spectrum-chat]: https://spectrum.chat/bazzite/login?r=https://spectrum.chat/bazzite/open-source
-[contact-page]: https://aceforth.com/contact
-[twitter]: https://twitter.com/AceforthHQ
+Si necesitas Asistencia Profesional para tu(s) proyecto(s), ponte en contacto con nosotros en <https://aceforth.com/contact>.

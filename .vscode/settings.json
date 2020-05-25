@@ -18,6 +18,7 @@
   "files.associations": {
     "*.js.tpl": "javascript",
     "*.ts.tpl": "typescript",
+    "*.yml.tpl": "yaml",
     "*.env.example": "dotenv",
   }
 }

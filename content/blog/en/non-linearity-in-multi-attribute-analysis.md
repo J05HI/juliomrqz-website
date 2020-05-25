@@ -1,17 +1,13 @@
 ---
-slug: "non-linearity-in-multi-attribute-analysis"
-published: '2013-09-08'
-created: '2017-09-18'
-modified: '2020-05-09T20:25:25Z'
-description: >-
-  Through time, deterministic methods have been used for prediction of reservoir
-  properties that are used to convert seismic data to the desired reservoir
-  property.
 title: Non-Linearity in Multi-Attribute Analysis
-headline: >-
-  Deterministic methods have been used for prediction of reservoir properties
-  from seismic data.
-canonical: 'https://latraza.wordpress.com/2013/08/09/non-linearity-in-multi-attribute-analysis/'
+slug: non-linearity-in-multi-attribute-analysis
+description: Through time, deterministic methods have been used for prediction
+  of reservoir properties that are used to convert seismic data to the desired
+  reservoir property.
+cover: blog/non-linearity-in-multi-attribute-analysis-cover.jpg
+created: 2017-09-18T00:00:00.000Z
+published: 2013-09-08T00:00:00.000Z
+canonical: https://latraza.wordpress.com/2013/08/09/non-linearity-in-multi-attribute-analysis/
 ---
 
 

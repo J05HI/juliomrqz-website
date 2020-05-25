@@ -17,7 +17,7 @@
         <div
           class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none"
         >
-          <ArticleCard
+          <BlogArticleCard
             v-for="post in posts"
             :key="post.slug"
             :attributes="post"
@@ -30,18 +30,17 @@
 
 <script>
 import SeoHead from '~/components/mixins/SeoHead'
-import ArticleCard from '~/components/blog/ArticleCard'
 
 export default {
-  components: {
-    ArticleCard,
-  },
   mixins: [SeoHead],
-  async asyncData({ app, $sentry }) {
+  async asyncData({ app, $sentry, $content }) {
     let posts = []
 
     try {
-      posts = await app.$blog.getArticles(app.i18n.locale)
+      posts = await $content('blog', app.i18n.locale)
+        .only(['slug', 'title', 'description', 'published', 'cover'])
+        .sortBy('created', 'desc')
+        .fetch()
     } catch (error) {
       $sentry.captureException(error)
     }

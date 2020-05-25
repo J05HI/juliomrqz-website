@@ -385,3 +385,6 @@ sitemap.xml
 source
 
 .now
+.vercel
+
+static/admin/config.yml

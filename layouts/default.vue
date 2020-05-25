@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <TheNavbar />
 
     <main class="main-container">
       <Nuxt />
@@ -11,14 +11,7 @@
 </template>
 
 <script>
-import Navbar from '~/components/Navbar.vue'
-import TheFooter from '~/components/Footer.vue'
-
 export default {
-  components: {
-    Navbar,
-    TheFooter,
-  },
   head() {
     return {
       __dangerouslyDisableSanitizers: ['script'],

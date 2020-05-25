@@ -6,16 +6,17 @@
   >
     <LazyHydrate ssr-only>
       <div>
-        <meta itemprop="dateCreated" :content="attributes.created" />
-        <meta itemprop="datePublished" :content="attributes.published" />
-        <meta itemprop="dateModified" :content="attributes.modified" />
-        <meta itemprop="description" :content="attributes.description" />
+        <meta itemprop="dateCreated" :content="head.created" />
+        <meta itemprop="datePublished" :content="head.published" />
+        <meta itemprop="dateModified" :content="head.modified" />
+        <meta itemprop="description" :content="post.description" />
+        <meta itemprop="timeRequired" :content="`PT${post.readingTime}M`" />
         <meta itemprop="inLanguage" :content="$i18n.locale" />
         <meta
           itemprop="mainEntityOfPage"
           :content="`https://marquez.co${localePath({
             name: 'blog-slug',
-            params: { slug: attributes.slug },
+            params: { slug: post.slug },
           })}`"
         />
 
@@ -26,9 +27,7 @@
         >
           <meta
             itemprop="url"
-            :content="
-              require(`~/assets/images/blog/${attributes.slug}/cover.jpg`)
-            "
+            :content="require(`~/assets/images/content/${post.cover}`)"
           />
           <meta itemprop="width" content="1200px" />
           <meta itemprop="height" content="630px" />
@@ -70,7 +69,7 @@
             itemprop="name headline"
             class="font-open-sans text-2xl leading-7 font-bold dark:text-gray-100 mb-8 md:text-3xl"
           >
-            {{ attributes.title }}
+            {{ post.title }}
           </h1>
 
           <div class="flex flex-wrap">
@@ -91,10 +90,10 @@
                   >Julio Márquez</span
                 >
                 <time
-                  :datetime="attributes.published"
+                  :datetime="post.published"
                   class="text-sm text-gray-600 dark:text-gray-300"
                 >
-                  {{ formatDate(attributes.published) }}
+                  {{ formatDate(post.published) }}
                 </time>
               </div>
             </div>
@@ -102,39 +101,43 @@
         </div>
 
         <div itemprop="description" class="text-xl mb-8 mt-4">
-          {{ attributes.description }}
+          {{ post.description }}
         </div>
 
         <div class="-mx-6 mb-8 md:mx-0">
           <ImageResponsive
             :source="
-              require(`~/assets/images/blog/${attributes.slug}/cover.jpg?resize&sizes[]=800&sizes[]=1200`)
+              require(`~/assets/images/content/${post.cover}?resize&sizes[]=800&sizes[]=1200`)
             "
             :width="1200 / 1.5"
             :height="630 / 1.5"
-            :alt="attributes.title"
+            :alt="post.title"
             class="md:shadow-lg md:rounded-lg"
             classes="w-full md:rounded-lg"
           />
         </div>
 
-        <ArticleContent itemprop="articleBody" />
+        <NuxtContent
+          :document="post"
+          itemprop="articleBody"
+          class="markdown-body"
+        />
 
         <aside
-          v-if="attributes.canonical"
+          v-if="post.canonical"
           class="mb-12 mt-8 py-4 border-t border-grey-600 text-base"
         >
           {{ $t('blog.publishedAt') }}
 
           <a
-            :href="`${attributes.canonical}?ref=marquez-blog`"
+            :href="`${post.canonical}?ref=marquez-blog`"
             target="_blank"
             rel="noopener noreferrer"
             class="underline text-blue-600 dark:text-blue-400"
-            >{{ getDomain(attributes.canonical) }}</a
+            >{{ getDomain(post.canonical) }}</a
           >
 
-          {{ $t('blog.on') }} {{ formatDate(attributes.created) }}.
+          {{ $t('blog.on') }} {{ formatDate(post.created) }}.
         </aside>
       </div>
     </LazyHydrate>
@@ -145,10 +148,12 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import Url from 'url-parse'
+import isAlphanumeric from 'validator/lib/isAlphanumeric'
 
-import ArticleContent from '~/components/blog/ArticleContent.vue'
 import SeoHead from '~/components/mixins/SeoHead'
 import FormatDate from '~/components/mixins/FormatDate'
+
+import { BlogPostContent } from '~/interfaces'
 
 interface Data {
   html: string
@@ -157,40 +162,42 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: {
-    ArticleContent,
-  },
   mixins: [SeoHead, FormatDate],
-  async asyncData({ app, params, $sentry }) {
+  async asyncData({ app, params, $sentry, $content }) {
     try {
       const { slug } = params
-      const { locale } = app.i18n
-      const { attributes } = await app.$blog.getArticle(slug, locale)
-      const title = `${attributes.title} - Blog`
+      const post: BlogPostContent = await $content(
+        'blog',
+        app.i18n.locale,
+        slug
+      ).fetch()
+
+      const title = `${post.title} - Blog`
       const {
         description,
         canonical,
         created,
-        modified,
+        updatedAt,
         published,
         // wordCount,
         noindex,
-      } = attributes
-      const postAbsoluteUrl = `${process.env.baseHost}${
-        locale === 'es' ? '/es' : ''
-      }/blog/${slug}`
-      const image = require(`~/assets/images/blog/${slug}/cover.jpg`)
+      } = post
+
+      const postUrl = app.localePath({ name: 'blog-slug', params: { slug } })
+      const postAbsoluteUrl = `${process.env.baseHost}${postUrl}`
+
+      const image = require(`~/assets/images/content/${post.cover}`)
 
       return {
-        attributes,
+        post,
         head: {
           image,
           title,
           description,
           canonical,
-          created,
-          modified,
-          published,
+          created: new Date(created).toISOString(),
+          modified: new Date(updatedAt).toISOString(),
+          published: new Date(published).toISOString(),
           noindex,
           extraScripts: [
             {
@@ -243,8 +250,8 @@ export default Vue.extend({
       return result.hostname
     },
   },
-  validate({ params, app }) {
-    return app.$blog.validate('articleSlug', params.slug)
+  validate({ params }) {
+    return isAlphanumeric(params.slug.replace(/-/g, ''))
   },
 })
 </script>
